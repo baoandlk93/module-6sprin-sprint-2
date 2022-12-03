@@ -9,7 +9,6 @@ import {BlogModule} from "./component/blog/blog.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {StyleClassModule} from 'primeng/styleclass';
 import {HttpClientModule} from "@angular/common/http";
-
 @NgModule({
   declarations: [
     AppComponent

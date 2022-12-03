@@ -13,13 +13,19 @@ import { RegisterComponent } from './register/register.component';
 import {InputTextModule} from "primeng/inputtext";
 import {RippleModule} from "primeng/ripple";
 import {CalendarModule} from "primeng/calendar";
+import {KeyFilterModule} from "primeng/keyfilter";
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import {InputTextareaModule} from "primeng/inputtextarea";
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent,
+    ProfileEditComponent
   ],
     imports: [
         CommonModule,
@@ -32,7 +38,9 @@ import {CalendarModule} from "primeng/calendar";
         StyleClassModule,
         InputTextModule,
         RippleModule,
-        CalendarModule
+        CalendarModule,
+        KeyFilterModule,
+        InputTextareaModule
     ]
 })
 export class DecentralizationModule { }

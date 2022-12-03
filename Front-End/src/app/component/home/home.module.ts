@@ -13,6 +13,7 @@ import {InputTextModule} from "primeng/inputtext";
 import {InputTextareaModule} from "primeng/inputtextarea";
 import {AvatarModule} from "primeng/avatar";
 import {ScrollTopModule} from "primeng/scrolltop";
+import {AccordionModule} from "primeng/accordion";
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {ScrollTopModule} from "primeng/scrolltop";
         InputTextModule,
         InputTextareaModule,
         AvatarModule,
-        ScrollTopModule
+        ScrollTopModule,
+        AccordionModule
     ]
 })
 export class HomeModule {

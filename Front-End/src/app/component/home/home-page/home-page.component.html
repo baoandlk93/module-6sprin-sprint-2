@@ -1,88 +1,143 @@
-<p-carousel [value]="allCars | async" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
-    <ng-template pTemplate="header">
-    </ng-template>
-    <ng-template let-car pTemplate="item">
-        <div class="product-item text-light " pAnimate enterClass="flip" leaveClass="fadeoutleft">
-            <div class="product-item-content">
-                <div class="mb-3 mt-3 ms-2">
-                    <img width="100%" src="https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/03q4/267348/buick-rainier-v-8-cxl-photo-5787-s-original.jpg" class="product-image" />
+<div class="relative p-6 overflow-hidden">
+    <img src="https://zingxe.vn/media/26257/content/da778c3c-79ea-40ca-b9ae-d8e238b6047a.png?size=2048" alt="Image"
+         class="absolute top-0 left-0 w-auto h-full block md:w-full">
+
+    <div class="text-center my-6 relative">
+        <div class="text-6xl text-blue-900 font-bold mb-1">Bmt Car showroom</div>
+        <div class="text-6xl text-primary font-bold mb-4">Bộ phận hỗ trợ trực tuyến</div>
+        <p class="mt-0 mb-4 line-height-3 text-center mx-auto text-white" style="max-width:500px">Cung cấp dịch vụ hoàn
+            hảo nhất dành cho bạn và phương tiện của mình.</p>
+
+        <button pButton class="p-button-danger" pRipple label="Liên hệ tư vấn" type="button"></button>
+    </div>
+</div>
+
+<div class="surface-card relative p-6 overflow-hidden">
+    <p-carousel [value]="allCars | async" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1"
+                [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+        <ng-template pTemplate="header">
+        </ng-template>
+        <ng-template let-car pTemplate="item">
+            <div class="product-item text-black-alpha-90 " pAnimate enterClass="flip" leaveClass="fadeoutleft">
+                <div class="product-item-content">
+                    <div class="mb-3 mt-3 ms-2">
+                        <img width="100%"
+                             src="https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/03q4/267348/buick-rainier-v-8-cxl-photo-5787-s-original.jpg"
+                             class="product-image"/>
+                    </div>
+                    <div>
+                        <h4 class="mb-1">{{car.name}}</h4>
+                        <h6 class="mt-0 mb-3">${{car.price}}</h6>
+                        <!--                    <span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
+                        <div class="car-buttons mt-5">
+                            <p-button type="button" styleClass="p-button p-button-rounded mr-2"
+                                      icon="pi pi-search"></p-button>
+                            <p-button type="button" styleClass="p-button-success p-button-rounded mr-2"
+                                      icon="pi pi-star-fill"></p-button>
+                            <p-button type="button" styleClass="p-button-help p-button-rounded"
+                                      icon="pi pi-cog"></p-button>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="mb-1">{{car.name}}</h4>
-                    <h6 class="mt-0 mb-3">${{car.price}}</h6>
-<!--                    <span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
-                    <div class="car-buttons mt-5">
-                        <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-search"></p-button>
-                        <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
-                        <p-button type="button" styleClass="p-button-help p-button-rounded" icon="pi pi-cog"></p-button>
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>
+
+<!--Nội dung thứ 2-->
+<div class="relative p-6 overflow-hidden ">
+    <div class="font-bold text-4xl text-900 mb-5 text-center">Bài viết nổi bật</div>
+    <div class="grid nogutter">
+        <div class="col-12 lg:col-4 p-3">
+            <div class="shadow-2 border-round h-full surface-card">
+                <img src="https://storage.googleapis.com/f1-cms/2020/08/b93bd613-20200826_092520.jpg"
+                     alt="Image" class="block w-full border-round-top">
+                <div class="p-4">
+                    <!--                    <span class="block font-medium text-blue-600 mb-3">Crime</span>-->
+                    <div class="text-xl text-900 font-medium mb-3 line-height-3 ">Bugatti La Voatio Noire
+                    </div>
+                    <div class="text-sm line-height-3 mb-3 text-700">La Voatio Noire sở hữu động cơ 4 xi-lanh, W16 có
+                        dung tích 8.0L giống như dòng xe Chiron,
+                        cung cấp công suất 1,479 mã lực và mô-men xoắn cực đại 1.600 Nm.
+                        Ngoài ra, chiếc xe đắt nhất thế giới này còn được Bugatti trang bị 6 ống xả,
+                        mâm xe hoàn toàn mới, thiết kế ca-lăng hầm hố và kèm theo đó là một huy hiệu Bugatti cực lớn
+                        được chiếu sáng rực rỡ ở phía sau.
+                        Chiếc Bugatti La Voatio Noire độc bản này đã chính thức soán ngôi Roll-Royce để trở thành siêu
+                        xe đắt nhất thế giới trong mọi thời đại.
+                    </div>
+                    <div class="flex">
+                        <p-avatar
+                                image="https://image.tienphong.vn/600x315/Uploaded/2022/cvjntckxtiwdpcv/2019_12_23/top_10_mau_xe_dep_QAMN.jpg"
+                                shape="circle"></p-avatar>
+                        <div class="ml-2">
+                            <div class="text-xs font-bold text-900 mb-1">Anna Lane</div>
+                            <div class="text-xs flex align-items-center text-700">
+                                <i class="pi pi-calendar mr-1 text-xs"></i>
+                                <span>Apr 5, 2021</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </ng-template>
-</p-carousel>
-
-
-<!--Nội dung thứ 2-->
-<div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
-    <div>
-        <div class="font-bold text-4xl text-900 mb-5 text-center">Bài viết nổi bật</div>
-        <div class="grid nogutter">
-            <div class="col-12 lg:col-4 p-3">
-                <div class="shadow-2 border-round h-full surface-card">
-                    <img src="https://vnn-imgs-f.vgcloud.vn/2020/07/27/14/chiem-nguong-10-mau-xe-dep-nhat-thap-ki-qua.jpg" alt="Image" class="block w-full border-round-top">
-                    <div class="p-4">
-                        <span class="block font-medium text-blue-600 mb-3">Crime</span>
-                        <div class="text-xl text-900 font-medium mb-3 line-height-3 ">Fugitive flamingo spotted in Florida</div>
-                        <div class="text-sm line-height-3 mb-3 text-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                        <div class="flex">
-                            <p-avatar image="https://image.tienphong.vn/600x315/Uploaded/2022/cvjntckxtiwdpcv/2019_12_23/top_10_mau_xe_dep_QAMN.jpg" shape="circle"></p-avatar>
-                            <div class="ml-2">
-                                <div class="text-xs font-bold text-900 mb-1">Anna Lane</div>
-                                <div class="text-xs flex align-items-center text-700">
-                                    <i class="pi pi-calendar mr-1 text-xs"></i>
-                                    <span>Apr 5, 2021</span>
-                                </div>
+        <div class="col-12 lg:col-4 p-3">
+            <div class="shadow-2 border-round h-full surface-card">
+                <img src="https://storage.googleapis.com/f1-cms/2020/08/78fc5529-20200826_092621.jpg"
+                     alt="Image" class="block w-full border-round-top">
+                <div class="p-4 flex flex-column">
+                    <!--                    <span class="block font-medium text-blue-600 mb-3">Wildlife</span>-->
+                    <div class="text-xl text-900 font-medium mb-3 line-height-3 ">Mercedes-Maybach Exelero</div>
+                    <div class="text-sm line-height-3 mb-3 text-700">Maybach Exelero là chiếc siêu xe hiếm nhất thế giới
+                        vì hãng Mercedes-Benz chỉ sản xuất đúng duy nhất 1 chiếc và được trình làng vào năm 2004 với giá
+                        8 triệu USD. Maybach Exelero có 4 chỗ ngồi, nặng đến 2.654 kg,
+                        Exelero được chế tác dựa trên khung sườn của Maybach, sở hữu trái tim V12 tăng áp kép, cung cấp
+                        công suất 690 mã lực, mô-men xoắn cực đại 1.020 Nm và có thể đạt vận tốc tối đa lên đến 350
+                        km/h. Nếu điều chỉnh giá của Exelero theo lạm phát thì có thể hiện tại xe này có giá hơn 10
+                        triệu USD.
+                    </div>
+                    <div class="flex">
+                        <p-avatar
+                                image="https://image.tienphong.vn/600x315/Uploaded/2022/cvjntckxtiwdpcv/2019_12_23/top_10_mau_xe_dep_QAMN.jpg"
+                                shape="circle"></p-avatar>
+                        <div class="ml-2">
+                            <div class="text-xs font-bold text-900 mb-1">Arlene McCoy</div>
+                            <div class="text-xs flex align-items-center text-700">
+                                <i class="pi pi-calendar mr-1 text-xs"></i>
+                                <span>Apr 6, 2021</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 lg:col-4 p-3">
-                <div class="shadow-2 border-round h-full surface-card">
-                    <img src="https://image.tienphong.vn/600x315/Uploaded/2022/cvjntckxtiwdpcv/2019_12_23/top_10_mau_xe_dep_QAMN.jpg" alt="Image" class="block w-full border-round-top">
-                    <div class="p-4 flex flex-column">
-                        <span class="block font-medium text-blue-600 mb-3">Wildlife</span>
-                        <div class="text-xl text-900 font-medium mb-3 line-height-3 ">Journey to the Ends of the Earth</div>
-                        <div class="text-sm line-height-3 mb-3 text-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                        <div class="flex">
-                            <p-avatar image="https://image.tienphong.vn/600x315/Uploaded/2022/cvjntckxtiwdpcv/2019_12_23/top_10_mau_xe_dep_QAMN.jpg" shape="circle"></p-avatar>
-                            <div class="ml-2">
-                                <div class="text-xs font-bold text-900 mb-1">Arlene McCoy</div>
-                                <div class="text-xs flex align-items-center text-700">
-                                    <i class="pi pi-calendar mr-1 text-xs"></i>
-                                    <span>Apr 6, 2021</span>
-                                </div>
-                            </div>
-                        </div>
+        </div>
+        <div class="col-12 lg:col-4 p-3">
+            <div class="shadow-2 border-round h-full surface-card">
+                <img src="https://storage.googleapis.com/f1-cms/2020/08/d42cd691-20200826_092716.jpg" alt="Image"
+                     class="block w-full border-round-top">
+                <div class="p-4">
+                    <!--                    <span class="block font-medium text-blue-600 mb-3">Marie</span>-->
+                    <div class="text-xl text-900 font-medium mb-3 line-height-3 ">Lamborghini Veneno
                     </div>
-                </div>
-            </div>
-            <div class="col-12 lg:col-4 p-3">
-                <div class="shadow-2 border-round h-full surface-card">
-                    <img src="https://katavina.com/uploaded/tin-tuc/BMW-41-ty-USD-5.jpg" alt="Image" class="block w-full border-round-top">
-                    <div class="p-4">
-                        <span class="block font-medium text-blue-600 mb-3">Marie</span>
-                        <div class="text-xl text-900 font-medium mb-3 line-height-3 ">'Real and imminent' extinction risk</div>
-                        <div class="text-sm line-height-3 mb-3 text-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                        <div class="flex">
-                            <p-avatar image="https://katavina.com/uploaded/tin-tuc/BMW-41-ty-USD-5.jpg" shape="circle"></p-avatar>
-                            <div class="ml-2">
-                                <div class="text-xs font-bold text-900 mb-1">Diane Miles</div>
-                                <div class="text-xs flex align-items-center text-700">
-                                    <i class="pi pi-calendar mr-1 text-xs"></i>
-                                    <span>Apr 9, 2021</span>
-                                </div>
+                    <div class="text-sm line-height-3 mb-3 text-700">Hiện nay trên thế giới chỉ có đúng 14 chiếc Veneno
+                        do hãng siêu xe Lamborghini sản xuất từ năm 2014 đến 2015. Mỗi chiếc có giá bán vào khoảng 4,5
+                        triệu USD và mức giá cao nhất là 5,6 triệu USD phụ thuộc vào thông số kỹ thuật của xe, có cả
+                        định dạng mui trần và coupe.
+                        Siêu xe này chỉ mất khoảng 2,9s để có thể tăng tốc 0-100km/h nhờ được trang bị động cơ V12 6,5L
+                        của nhà Aventador, nhưng cung cấp hiệu suất mạnh mẽ hơn với công suất 740 mã lực và mô-men xoắn
+                        cực đại 609 Nm. Để kỷ niệm đặc biệt cho chặng đường 50 năm vô cùng hào hùng của hãng sản xuất
+                        siêu xe hàng đầu thế giới Lamborghini còn cho ra dòng xe phiên bản đặc biệt là Lamborghini
+                        Veneno Roadster. Phiên bản này có giá lên đến 5,6 triệu đô và chủ sản xuất đúng 9 chiếc. Veneno
+                        Roadster có thiết kế đậm chất xe đua cực kỳ ấn tượng, dễ dàng đạt vận tốc tối đa lên đến 353,4
+                        km/h và trong vòng chưa đến 3s có thể đạt vận tốc 100km/h.
+                    </div>
+                    <div class="flex">
+                        <p-avatar image="https://katavina.com/uploaded/tin-tuc/BMW-41-ty-USD-5.jpg"
+                                  shape="circle"></p-avatar>
+                        <div class="ml-2">
+                            <div class="text-xs font-bold text-900 mb-1">Diane Miles</div>
+                            <div class="text-xs flex align-items-center text-700">
+                                <i class="pi pi-calendar mr-1 text-xs"></i>
+                                <span>Apr 9, 2021</span>
                             </div>
                         </div>
                     </div>
@@ -92,3 +147,234 @@
     </div>
 </div>
 
+
+<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+    <div class="font-bold text-900 text-4xl mb-3">Rất nhiều người đã hài lòng với các dịch vụ bên chúng tôi</div>
+    <div class="text-700 mb-5 line-height-3">Bạn có thể xem các chi tiết về những dịch vụ chăm sóc của showroom chúng
+        tôi
+    </div>
+    <div class="p-3 border-round surface-50">
+        <div class="flex flex-wrap">
+            <div class="w-full lg:w-6 p-3">
+                <div class="text-lg text-900 mb-3 font-medium">Dịch vụ</div>
+                <p-accordion>
+                    <p-accordionTab>
+                        <ng-template pTemplate="header">
+                            <div class="flex align-items-center">
+                                <span class="block inline-flex align-items-center justify-content-center border-circle surface-300 mr-2 text-700"
+                                      style="width: 2rem; height: 2rem">
+                                    <i class="pi pi-cloud text-sm"></i>
+                                </span>
+                                <span>Chăm sóc khách hàng</span>
+                            </div>
+                        </ng-template>
+                        <p class="line-height-3">Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque
+                            habitant morbi. Sit amet risus nullam eget felis eget. Feugiat pretium nibh ipsum consequat
+                            nisl vel pretium.</p>
+                    </p-accordionTab>
+                    <p-accordionTab>
+                        <ng-template pTemplate="header">
+                            <div class="flex align-items-center">
+                                <span class="block inline-flex align-items-center justify-content-center border-circle surface-300 mr-2 text-700"
+                                      style="width: 2rem; height: 2rem">
+                                    <i class="pi pi-chart-bar text-sm"></i>
+                                </span>
+                                <span>Bảo dưỡng</span>
+                            </div>
+                        </ng-template>
+                        <p class="line-height-3">Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque
+                            habitant morbi. Sit amet risus nullam eget felis eget. Feugiat pretium nibh ipsum consequat
+                            nisl vel pretium.</p>
+                    </p-accordionTab>
+                    <p-accordionTab>
+                        <ng-template pTemplate="header">
+                            <div class="flex align-items-center">
+                                <span class="block inline-flex align-items-center justify-content-center border-circle surface-300 mr-2 text-700"
+                                      style="width: 2rem; height: 2rem">
+                                    <i class="pi pi-key text-sm"></i>
+                                </span>
+                                <span>Bảo hiểm</span>
+                            </div>
+                        </ng-template>
+                        <p class="line-height-3">Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque
+                            habitant morbi. Sit amet risus nullam eget felis eget. Feugiat pretium nibh ipsum consequat
+                            nisl vel pretium.</p>
+                    </p-accordionTab>
+                    <p-accordionTab>
+                        <ng-template pTemplate="header">
+                            <div class="flex align-items-center">
+                                <span class="block inline-flex align-items-center justify-content-center border-circle surface-300 mr-2 text-700"
+                                      style="width: 2rem; height: 2rem">
+                                    <i class="pi pi-file-pdf text-sm"></i>
+                                </span>
+                                <span> Tín dụng</span>
+                            </div>
+                        </ng-template>
+                        <p class="line-height-3">Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque
+                            habitant morbi. Sit amet risus nullam eget felis eget. Feugiat pretium nibh ipsum consequat
+                            nisl vel pretium.</p>
+                    </p-accordionTab>
+                    <p-accordionTab>
+                        <ng-template pTemplate="header">
+                            <div class="flex align-items-center">
+                                <span class="block inline-flex align-items-center justify-content-center border-circle surface-300 mr-2 text-700"
+                                      style="width: 2rem; height: 2rem">
+                                    <i class="pi pi-book text-sm"></i>
+                                </span>
+                                <span>Đăng kiểm</span>
+                            </div>
+                        </ng-template>
+                        <p class="line-height-3">Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque
+                            habitant morbi. Sit amet risus nullam eget felis eget. Feugiat pretium nibh ipsum consequat
+                            nisl vel pretium.</p>
+                    </p-accordionTab>
+                </p-accordion>
+            </div>
+            <div class="w-full lg:w-6 p-3">
+                <div class="text-lg text-900 mb-3 font-medium">Bộ phận hỗ trợ</div>
+                <p-accordion>
+                    <p-accordionTab>
+                        <ng-template pTemplate="header">
+                            <div class="flex align-items-center">
+                                <span class="block inline-flex align-items-center justify-content-center border-circle surface-300 mr-2 text-700"
+                                      style="width: 2rem; height: 2rem">
+                                    <i class="pi pi-filter text-sm"></i>
+                                </span>
+                                <span>Tiếp nhận phản hồi</span>
+                            </div>
+                        </ng-template>
+                        <p class="line-height-3">Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque
+                            habitant morbi. Sit amet risus nullam eget felis eget. Feugiat pretium nibh ipsum consequat
+                            nisl vel pretium.</p>
+                    </p-accordionTab>
+                    <p-accordionTab>
+                        <ng-template pTemplate="header">
+                            <div class="flex align-items-center">
+                                <span class="block inline-flex align-items-center justify-content-center border-circle surface-300 mr-2 text-700"
+                                      style="width: 2rem; height: 2rem">
+                                    <i class="pi pi-credit-card text-sm"></i>
+                                </span>
+                                <span>Cổng thanh toán</span>
+                            </div>
+                        </ng-template>
+                        <p class="line-height-3">Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque
+                            habitant morbi. Sit amet risus nullam eget felis eget. Feugiat pretium nibh ipsum consequat
+                            nisl vel pretium.</p>
+                    </p-accordionTab>
+                    <p-accordionTab>
+                        <ng-template pTemplate="header">
+                            <div class="flex align-items-center">
+                                <span class="block inline-flex align-items-center justify-content-center border-circle surface-300 mr-2 text-700"
+                                      style="width: 2rem; height: 2rem">
+                                    <i class="pi pi-map-marker text-sm"></i>
+                                </span>
+                                <span>Cứu hộ 24/24</span>
+                            </div>
+                        </ng-template>
+                        <p class="line-height-3">Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque
+                            habitant morbi. Sit amet risus nullam eget felis eget. Feugiat pretium nibh ipsum consequat
+                            nisl vel pretium.</p>
+                    </p-accordionTab>
+                    <p-accordionTab>
+                        <ng-template pTemplate="header">
+                            <div class="flex align-items-center">
+                                <span class="block inline-flex align-items-center justify-content-center border-circle surface-300 mr-2 text-700"
+                                      style="width: 2rem; height: 2rem">
+                                    <i class="pi pi-tags text-sm"></i>
+                                </span>
+                                <span>Hỗ trợ lên đời xe</span>
+                            </div>
+                        </ng-template>
+                        <p class="line-height-3">Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque
+                            habitant morbi. Sit amet risus nullam eget felis eget. Feugiat pretium nibh ipsum consequat
+                            nisl vel pretium.</p>
+                    </p-accordionTab>
+                    <p-accordionTab>
+                        <ng-template pTemplate="header">
+                            <div class="flex align-items-center">
+                                <span class="block inline-flex align-items-center justify-content-center border-circle surface-300 mr-2 text-700"
+                                      style="width: 2rem; height: 2rem">
+                                    <i class="pi pi-eye text-sm"></i>
+                                </span>
+                                <span>Bảo mật thông tin khách hàng</span>
+                            </div>
+                        </ng-template>
+                        <p class="line-height-3">Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque
+                            habitant morbi. Sit amet risus nullam eget felis eget. Feugiat pretium nibh ipsum consequat
+                            nisl vel pretium.</p>
+                    </p-accordionTab>
+                </p-accordion>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
+    <div>
+        <div class="text-900 font-bold text-4xl line-height-3 mb-3 text-center">Thống kê uy tín cửa hàng</div>
+        <p class="text-600 line-height-3 text-lg m-0 mb-6 text-center">Excepteur sint occaecat cupidatat non proident,
+            sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <div class="grid surface-card shadow-2" style="border-radius: 10px">
+            <div class="col-12 md:col-3 px-5 py-5">
+                <i class="pi pi-users text-4xl text-blue-600 mb-3"></i>
+                <div class="text-900 font-bold text-4xl mb-3 line-height-3">83M</div>
+                <p class="text-700 m-0">Nostrum laborum accusamus quia iste facere possimus.</p>
+            </div>
+            <div class="col-12 md:col-3 px-5 py-5">
+                <i class="pi pi-chart-line text-4xl text-orange-500 mb-3"></i>
+                <div class="text-900 font-bold text-4xl mb-3 line-height-3">$256K</div>
+                <p class="text-700 m-0">Nostrum laborum accusamus quia iste facere possimus.</p>
+            </div>
+            <div class="col-12 md:col-3 px-5 py-5">
+                <i class="pi pi-globe text-4xl text-cyan-600 mb-3"></i>
+                <div class="text-900 font-bold text-4xl mb-3 line-height-3">1,453</div>
+                <p class="text-700 m-0">Nostrum laborum accusamus quia iste facere possimus.</p>
+            </div>
+            <div class="col-12 md:col-3 px-5 py-5">
+                <i class="pi pi-map text-4xl text-purple-500 mb-3"></i>
+                <div class="text-900 font-bold text-4xl mb-3 line-height-3">45 km</div>
+                <p class="text-700 m-0">Nostrum laborum accusamus quia iste facere possimus.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="surface-section px-4 py-8 md:px-6 lg:px-8 text-center">
+    <div class="text-900 font-bold text-4xl line-height-3 mb-3 text-center">Các đối tác của chúng tôi</div>
+    <p class="text-600 line-height-3 text-lg m-0 mb-6 text-center">Excepteur sint occaecat cupidatat non proident,
+        sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div class="grid">
+        <div class="col-12 md:col-4 mb-4 px-5 block">
+            <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
+                <img src="https://zingxe.vn/ContentCustom/images/block21-1.png">
+            </span>
+        </div>
+        <div class="col-12 md:col-4 mb-4 px-5 block">
+            <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
+                <img src="https://zingxe.vn/ContentCustom/images/block21-2.png">
+            </span>
+        </div>
+        <div class="col-12 md:col-4 mb-4 px-5">
+            <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
+                <img src="https://zingxe.vn/ContentCustom/images/block21-3.png">
+            </span>
+        </div>
+        <div class="col-12 md:col-4 mb-4 px-5">
+            <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
+                <img src="https://zingxe.vn/ContentCustom/images/block21-4.png">
+            </span>
+        </div>
+        <div class="col-12 md:col-4 mb-4 px-5">
+            <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
+                <img src="https://zingxe.vn/ContentCustom/images/block21-5.png">
+            </span>
+        </div>
+        <div class="col-12 md:col-4 md:mb-4 mb-0 px-3">
+            <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
+                <img src="https://zingxe.vn/ContentCustom/images/block21-6.png">
+            </span>
+        </div>
+    </div>
+</div>

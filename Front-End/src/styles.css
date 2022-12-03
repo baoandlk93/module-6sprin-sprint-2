@@ -1,8 +1,9 @@
 @import "primeflex/primeflex.css";
-body {
-    background-image: url("https://bloganchoi.com/wp-content/uploads/2019/07/bmw-i8-2015-blue-2015.jpg");
-    background-size: cover;
-}
+/*body {*/
+/*    background-image: url("https://himg2.huanqiu.com/attachment2010/2016/0114/17/06/20160114050624333.jpg");*/
+/*    background-size: cover;*/
+/*    background-repeat: no-repeat;*/
+/*}*/
 a{
     decoration: none;
 }

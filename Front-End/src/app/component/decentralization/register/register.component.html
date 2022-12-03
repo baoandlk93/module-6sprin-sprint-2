@@ -5,34 +5,36 @@
             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
             <input type="text" pInputText placeholder="Tài khoản">
         </div>
-        <p-password [(ngModel)]="value3" [toggleMask]="true" placeholder="Mật khẩu"></p-password>
-        <p-password [(ngModel)]="value3" [toggleMask]="true" placeholder="Nhập lại mật khẩu"></p-password>
+        <p-password [(ngModel)]="value3" [pKeyFilter]="blockSpace" icon="pi pi-unlock" [toggleMask]="true" placeholder="Mật khẩu"></p-password>
+        <p-password [(ngModel)]="value3" [pKeyFilter]="blockSpace" [toggleMask]="true" placeholder="Nhập lại mật khẩu"></p-password>
+        <h3>Thông tin cá nhân</h3>
+
         <div class="p-inputgroup p-1">
-            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <span class="p-inputgroup-addon"><i class="fas fa-user-tie"></i></span>
             <input type="text" pInputText placeholder="Họ và tên">
         </div>
         <div class="p-inputgroup p-1">
-            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <span class="p-inputgroup-addon"><i class="pi pi-map-marker"></i></span>
             <input type="text" pInputText placeholder="Địa chỉ">
         </div>
         <div class="p-inputgroup p-1">
-            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <span class="p-inputgroup-addon"><i class="pi pi-calendar-plus"></i></span>
             <p-calendar placeholder="Ngày sinh" [(ngModel)]="date13" [touchUI]="true" [readonlyInput]="true" [disabledDates]="invalidDates" [disabledDays]="[0,6]" inputId="touchui"></p-calendar>
         </div>
         <div class="p-inputgroup p-1">
-            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <span class="p-inputgroup-addon"><i class="pi pi-users"></i></span>
             <input type="text" pInputText placeholder="Giới tính">
         </div>
         <div class="p-inputgroup p-1">
-            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
             <input type="text" pInputText placeholder="CMND|CCCD">
         </div>
         <div class="p-inputgroup p-1">
-            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
             <input type="text" pInputText placeholder="Email">
         </div>
         <div class="p-inputgroup p-1">
-            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <span class="p-inputgroup-addon"><i class="pi pi-mobile"></i></span>
             <input type="text" pInputText placeholder="Số ĐT">
         </div>
         <div class="p-inputgroup p-1">
