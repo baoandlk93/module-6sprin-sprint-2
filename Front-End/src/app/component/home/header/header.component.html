@@ -1,59 +1,205 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-info navbar-fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <i class="fas fa-home"></i>Trang chủ
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-book"></i> Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fas fa-sms"></i> Tư vấn</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-car"></i> Mua xe
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Xe cũ</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Xe mới</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Tìm xe" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
-      </form>
+
+<!--Lựa chọn thứ nhất-->
+<!--<div class="surface-overlay py-3 px-6 shadow-2 flex align-items-center justify-content-between relative lg:static">-->
+<!--  <img src="assets/image/blocks/logos/cars/icons8-car-roof-box-80.png" alt="Image" height="50" class="mr-0 lg:mr-5">-->
+<!--  <a pRipple class="cursor-pointer block lg:hidden text-700" pStyleClass="@next" enterClass="hidden" leaveToClass="hidden" [hideOnOutsideClick]="true">-->
+<!--    <i class="pi pi-bars text-4xl"></i>-->
+<!--  </a>-->
+<!--  <div class="align-items-center flex-grow-1 justify-content-between hidden lg:flex absolute lg:static w-full surface-overlay left-0 top-100 px-6 lg:px-0 z-4 shadow-2 lg:shadow-none">-->
+<!--    <ul class="list-none p-0 m-0 flex lg:align-items-center text-900 select-none flex-column lg:flex-row cursor-pointer">-->
+<!--      <li class="relative">-->
+<!--        <a pRipple class="flex px-0 lg:px-5 py-3 align-items-center hover:text-blue-600 font-medium transition-colors transition-duration-150"-->
+<!--           pStyleClass="@next" enterClass="hidden" enterActiveClass="fadein" leaveToClass="hidden" [hideOnOutsideClick]="true">-->
+<!--          <span>Products</span>-->
+<!--          <i class="pi pi-chevron-down ml-auto lg:ml-3"></i>-->
+<!--        </a>-->
+<!--        <div class="border-round shadow-0 lg:shadow-2 lg:absolute surface-overlay hidden my-2 lg:my-0 w-full lg:w-30rem">-->
+<!--          <div class="grid">-->
+<!--            <div class="col-12 lg:col-6">-->
+<!--              <a pRipple class="flex p-3 align-items-center hover:surface-50 transition-colors transition-duration-150 border-round">-->
+<!--                <div class="p-2 border-round bg-blue-600 text-0 mr-3">-->
+<!--                  <i class="pi pi-list text-2xl"></i>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                  <span>Features</span>-->
+<!--                  <div class="text-600 text-sm mt-1">Subtext of item</div>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="col-12 lg:col-6">-->
+<!--              <a pRipple class="flex p-3 align-items-center hover:surface-50 transition-colors transition-duration-150 border-round">-->
+<!--                <div class="p-2 border-round bg-blue-600 text-0 mr-3">-->
+<!--                  <i class="pi pi-shield text-2xl"></i>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                  <span>Solutions</span>-->
+<!--                  <div class="text-600 text-sm mt-1">Subtext of item</div>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="col-12 lg:col-6">-->
+<!--              <a pRipple class="flex p-3 align-items-center hover:surface-50 transition-colors transition-duration-150 border-round">-->
+<!--                <div class="p-2 border-round bg-blue-600 text-0 mr-3">-->
+<!--                  <i class="pi pi-users text-2xl"></i>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                  <span>Customers</span>-->
+<!--                  <div class="text-600 text-sm mt-1">Subtext of item</div>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="col-12 lg:col-6">-->
+<!--              <a pRipple class="flex p-3 align-items-center hover:surface-50 transition-colors transition-duration-150 border-round">-->
+<!--                <div class="p-2 border-round bg-blue-600 text-0 mr-3">-->
+<!--                  <i class="pi pi-question-circle text-2xl"></i>-->
+<!--                </div>-->
+<!--                <div>-->
+
+<!--                  <span>Faq</span>-->
+<!--                  <div class="text-600 text-sm mt-1">Subtext of item</div>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="col-12 lg:col-6">-->
+<!--              <a pRipple class="flex p-3 align-items-center hover:surface-50 transition-colors transition-duration-150 border-round">-->
+<!--                <div class="p-2 border-round bg-blue-600 text-0 mr-3">-->
+<!--                  <i class="pi pi-file text-2xl"></i>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                  <span>Case Studies</span>-->
+<!--                  <div class="text-600 text-sm mt-1">Subtext of item</div>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="col-12 lg:col-6">-->
+<!--              <a pRipple class="flex p-3 align-items-center hover:surface-50 transition-colors transition-duration-150 border-round">-->
+<!--                <div class="p-2 border-round bg-blue-600 text-0 mr-3">-->
+<!--                  <i class="pi pi-search text-2xl"></i>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                  <span>Library</span>-->
+<!--                  <div class="text-600 text-sm mt-1">Subtext of item</div>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a pRipple class="flex px-0 lg:px-5 py-3 hover:text-blue-600 font-medium transition-colors transition-duration-150">-->
+<!--          <span>Corporate</span>-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a pRipple class="flex px-0 lg:px-5 py-3 hover:text-blue-600 font-medium transition-colors transition-duration-150">-->
+<!--          <span>Resources</span>-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a pRipple class="flex px-0 lg:px-5 py-3 hover:text-blue-600 font-medium transition-colors transition-duration-150">-->
+<!--          <span>Pricing</span>-->
+<!--        </a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--    <div class="flex justify-content-between lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0">-->
+<!--      <button pButton pRipple label="Đăng nhập" class="p-button-text font-bold"></button>-->
+<!--      <button pButton pRipple label="Đăng ký" class="ml-3 font-bold"></button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--LỰA CHỌN THỨ 2-->
+<div class="surface-overlay py-3 px-6 shadow-2 flex align-items-center justify-content-between relative lg:static">
+  <a href="">
+    <img src="assets/image/blocks/logos/bootstrap4-light-purple.svg" alt="Image" height="50" class="mr-0 lg:mr-5">
+  </a>
+  <a class="cursor-pointer block lg:hidden text-700" pStyleClass="@next" enterClass="hidden" leaveToClass="hidden" [hideOnOutsideClick]="true">
+    <i class="pi pi-bars text-4xl"></i>
+  </a>
+  <div class="align-items-center flex-grow-1 justify-content-between hidden lg:flex absolute lg:static w-full surface-overlay left-0 top-100 px-6 lg:px-0 z-2 shadow-2 lg:shadow-none">
+    <section></section>
+    <ul class="list-none p-0 m-0 flex lg:align-items-center text-900 select-none flex-column lg:flex-row cursor-pointer">
+      <li class="relative">
+        <a pRipple class="flex px-0 lg:px-5 py-3 align-items-center hover:text-blue-600 font-medium transition-colors transition-duration-150"
+           pStyleClass="@next" enterClass="hidden" enterActiveClass="scalein" leaveToClass="hidden" leaveActiveClass="fadeout" [hideOnOutsideClick]="true">
+          <span>Dịch vụ</span>
+          <i class="pi pi-chevron-down ml-auto lg:ml-3"></i>
+        </a>
+        <ul class="list-none p-0 m-0 border-round shadow-0 lg:shadow-2 lg:absolute surface-overlay hidden origin-top w-full lg:w-15rem">
+          <li>
+            <a pRipple class="flex p-3 align-items-center hover:surface-50 transition-colors transition-duration-150">
+              <span>Đăng kiểm</span>
+            </a>
+          </li>
+          <li>
+            <a pRipple class="flex p-3 align-items-center hover:surface-50 transition-colors transition-duration-150">
+              <span>Bảo hiểm</span>
+            </a>
+          </li>
+          <li>
+            <a pRipple class="flex p-3 align-items-center hover:surface-50 transition-colors transition-duration-150">
+              <span>Chăm sóc khách hàng</span>
+            </a>
+          </li>
+          <li class="relative">
+            <a pRipple class="flex p-3 align-items-center hover:surface-50 transition-colors transition-duration-150"
+               pStyleClass="@next" enterClass="hidden" enterActiveClass="scalein" leaveToClass="hidden" leaveActiveClass="fadeout" [hideOnOutsideClick]="true">
+              <i class="pi pi-question-circle text-2xl mr-2 text-blue-600"></i>
+              <span>Hỗ trợ </span>
+              <i class="pi pi-chevron-down ml-auto lg:-rotate-90"></i>
+            </a>
+            <ul class="list-none py-3 pl-3 pr-0 m-0 lg:px-0 lg:py-0 border-round shadow-0 lg:shadow-2 lg:absolute surface-overlay hidden origin-top w-full lg:w-15rem cursor-pointer left-100 top-0">
+              <li>
+                <a pRipple class="flex p-3 align-items-center hover:surface-50 transition-colors transition-duration-150">
+                  <i class="pi pi-cloud mr-2"></i>
+                  <span class="font-medium">Trung tâm trợ giúp</span>
+                </a>
+              </li>
+              <li class="relative">
+                <a pRipple class="flex p-3 align-items-center hover:surface-50 transition-colors transition-duration-150">
+                  <i class="pi pi-question-circle mr-2"></i>
+                  <span class="font-medium">Góp ý dịch vụ</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a pRipple class="flex px-0 lg:px-5 py-3 hover:text-blue-600 font-medium transition-colors transition-duration-150">
+          <span>Mua xe</span>
+        </a>
+      </li>
+      <li>
+        <a pRipple class="flex px-0 lg:px-5 py-3 hover:text-blue-600 font-medium transition-colors transition-duration-150">
+          <span>Bán xe</span>
+        </a>
+      </li>
+      <li class="relative">
+        <a pRipple class="flex px-0 lg:px-5 py-3 align-items-center hover:text-blue-600 font-medium transition-colors transition-duration-150"
+           pStyleClass="@next" enterClass="hidden" enterActiveClass="scalein" leaveToClass="hidden" leaveActiveClass="fadeout" [hideOnOutsideClick]="true">
+          <span>Blog, tin tức</span>
+          <i class="pi pi-chevron-down ml-auto lg:ml-3"></i>
+        </a>
+        <ul class="list-none p-0 m-0 border-round shadow-0 lg:shadow-2 lg:absolute surface-overlay hidden origin-top w-full lg:w-15rem">
+          <li>
+            <a pRipple class="flex p-3 align-items-center hover:surface-50 transition-colors transition-duration-150">
+              <i class="pi pi-book text-2xl mr-2 text-blue-600"></i>
+              <span>Blog</span>
+            </a>
+          </li>
+          <li>
+            <a pRipple class="flex p-3 align-items-center hover:surface-50 transition-colors transition-duration-150">
+              <i class="pi pi-book text-2xl mr-2 text-blue-600"></i>
+              <span>Tin tức</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <div class="flex justify-content-between lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0">
+      <button pButton pRipple label="Đăng nhập" class="p-button-text font-bold" routerLink="decentralization/login"></button>
+      <button pButton pRipple label="Đăng ký" class="ml-3 p-button-outlined font-bold" routerLink="decentralization/register"></button>
     </div>
   </div>
-</nav>
-<div id="menu">
-  <ul>
-    <li><a href="#">Sem 1</a>
-      <ul>
-        <li><a href="#">Computing Fundametal</a></li>
-        <li><a href="#">C Programming</a></li>
-        <li><a href="#">Building Dynamic Website</a></li>
-        <li><a href="#">MS Transact-SQL</a></li>
-        <li><a href="#">Project</a></li>
-      </ul>
-    </li>
-    <li><a href="#">Sem 2 </a>
-      <ul>
-        <li><a href="#">Cloud Computing</a></li>
-        <li><a href="#">APJ - I</a></li>
-        <li><a href="#">APJ - II</a></li>
-        <li><a href="#">APJ - III</a></li>
-        <li><a href="#">eProject</a></li>
-      </ul>
-    </li>
-    <li><a href="#">Sem 3</a></li>
-    <li><a href="#">Sem 4</a></li>
-
-  </ul>
 </div>

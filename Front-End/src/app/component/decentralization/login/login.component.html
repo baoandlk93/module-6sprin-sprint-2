@@ -1,0 +1,37 @@
+
+<div class="px-4 py-8 md:px-6 lg:px-8">
+    <div class="flex flex-wrap">
+        <div class="w-full lg:w-6 p-4 lg:p-7" style="background-color: rgba(255,255,255,.7)">
+            <img src="assets/image/Bmt_Carrer.png" alt="Image" height="100%" width="100%" class="mb-6">
+        </div>
+        <div class="w-full lg:w-6 p-4 lg:p-7 surface-card">
+            <div class="text-900 text-2xl font-medium mb-6">Đăng nhập</div>
+            <label for="email3" class="block text-900 font-medium mb-2">Tài khoản</label>
+            <input id="email3" type="text" pInputText class="w-full mb-4">
+
+            <label for="password3" class="block text-900 font-medium mb-2">Mật khẩu</label>
+            <input id="password3" type="password" pInputText class="w-full mb-4">
+
+            <div class="flex align-items-center justify-content-between mb-6">
+                <div class="flex align-items-center">
+                    <p-checkbox id="rememberme3" [binary]="true" styleClass="mr-2"></p-checkbox>
+                    <label for="rememberme3">Lưu mật khẩu</label>
+                </div>
+                <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Bạn quên mật khẩu ?</a>
+            </div>
+
+            <button pButton pRipple label="Đăng nhập" icon="pi pi-user" class="w-full"></button>
+
+            <p-divider align="center" styleClass="my-6">
+                <span class="text-600 font-normal text-sm">Hoặc</span>
+            </p-divider>
+
+            <button pButton pRipple label="Đăng nhập bằng Google" class="w-full p-button-primary">
+                <i class="pi pi-google text-pink-400 mr-2"></i>
+            </button>
+            <div class="mt-6 text-center text-600">
+                Bạn chưa có tài khoản ? <a (click)="register()" class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Đăng ký</a>
+            </div>
+        </div>
+    </div>
+</div>

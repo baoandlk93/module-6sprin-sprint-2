@@ -6,6 +6,9 @@ import {AppComponent} from './app.component';
 import {HomeModule} from "./component/home/home.module";
 import {CarModule} from "./component/car/car.module";
 import {BlogModule} from "./component/blog/blog.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {StyleClassModule} from 'primeng/styleclass';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -13,10 +16,13 @@ import {BlogModule} from "./component/blog/blog.module";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HomeModule,
     CarModule,
-    BlogModule
+    BlogModule,
+    StyleClassModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

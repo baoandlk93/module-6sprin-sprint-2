@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://www.primefaces.org/data/customers'
+  api_url: 'http://localhost:8080/api',
+   firebaseConfig :{
+    apiKey: "AIzaSyAa03iyPIJT0lSZj7u6VQstssG_f9FH1oE",
+    authDomain: "sale-car-management.firebaseapp.com",
+    projectId: "sale-car-management",
+    storageBucket: "sale-car-management.appspot.com",
+    messagingSenderId: "1068668441562",
+    appId: "1:1068668441562:web:69ce06fbac105e047566e3",
+    measurementId: "G-F3JZ7P4GWM"
+  }
 };
 
 /*

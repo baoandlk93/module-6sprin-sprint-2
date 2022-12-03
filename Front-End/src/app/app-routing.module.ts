@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeModule} from "./component/home/home.module";
 import {BlogModule} from "./component/blog/blog.module";
 import {CarModule} from "./component/car/car.module";
+import {DecentralizationModule} from "./component/decentralization/decentralization.module";
 
 const routes: Routes = [
   {
@@ -13,6 +14,9 @@ const routes: Routes = [
   },
   {
     path: 'car', loadChildren: () => CarModule
+  },
+  {
+    path: 'decentralization', loadChildren: () => DecentralizationModule
   }
 ];
 

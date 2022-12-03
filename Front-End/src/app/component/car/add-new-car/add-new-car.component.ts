@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-new-car.component.css']
 })
 export class AddNewCarComponent implements OnInit {
+  countries?: any;
 
   constructor() { }
 

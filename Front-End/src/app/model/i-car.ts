@@ -1,8 +1,15 @@
 export interface Car {
-  vin?: string;
+  description: string;
+  inventoryStatus: string;
+  id?: string;
+  name?: string;
   year?: number;
   brand?: string;
   color?: string;
   price?: number;
-  name?: string;
+  design?: string;
+  numberOfSeat?: number;
+  picture?: string;
+  gear?: string;
+  quantity?: number;
 }

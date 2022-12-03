@@ -1,0 +1,67 @@
+<div class="grid p-fluid justify-content-center m-3 p-1">
+    <div class="col-12 md:col-6 text-center bg-blue-200 p-1">
+        <h3 class="text-">Đăng ký</h3>
+        <div class="p-inputgroup p-1">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="Tài khoản">
+        </div>
+        <p-password [(ngModel)]="value3" [toggleMask]="true" placeholder="Mật khẩu"></p-password>
+        <p-password [(ngModel)]="value3" [toggleMask]="true" placeholder="Nhập lại mật khẩu"></p-password>
+        <div class="p-inputgroup p-1">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="Họ và tên">
+        </div>
+        <div class="p-inputgroup p-1">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="Địa chỉ">
+        </div>
+        <div class="p-inputgroup p-1">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <p-calendar placeholder="Ngày sinh" [(ngModel)]="date13" [touchUI]="true" [readonlyInput]="true" [disabledDates]="invalidDates" [disabledDays]="[0,6]" inputId="touchui"></p-calendar>
+        </div>
+        <div class="p-inputgroup p-1">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="Giới tính">
+        </div>
+        <div class="p-inputgroup p-1">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="CMND|CCCD">
+        </div>
+        <div class="p-inputgroup p-1">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="Email">
+        </div>
+        <div class="p-inputgroup p-1">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <input type="text" pInputText placeholder="Số ĐT">
+        </div>
+        <div class="p-inputgroup p-1">
+            <p-checkbox id="rememberme3" [binary]="true" styleClass="mr-2"></p-checkbox>
+            <label for="rememberme3">Tôi đồng ý với điều khoản</label>
+        </div>
+        <div class="p-inputgroup justify-content-center p-1">
+            <button pButton pRipple label="Đăng ký" class="p-button-success w-full font-bold" routerLink="decentraliztion/register">
+<!--                <i class="pi pi-google text-pink-400 mr-2"></i>-->
+            </button>
+<!--            <button pButton pRipple label="Huỷ Bỏ" class="p-button-danger font-bold" routerLink="decentraliztion/login"></button>-->
+        </div>
+        <div class="p-inputgroup justify-content-center p-1 w-full">
+<!--            <button pButton pRipple label="Đăng ký" class="ml-3 p-button-success font-bold" routerLink="decentraliztion/register"></button>-->
+            <button pButton pRipple label="Huỷ Bỏ" class="p-button-danger w-full font-bold" routerLink="decentraliztion/login">
+<!--                <i class="pi pi-google text-pink-400 mr-2"></i>-->
+            </button>
+        </div>
+        <p-divider align="center" styleClass="my-6">
+            <span class="text-600 font-normal text-sm">
+
+            </span>
+        </p-divider>
+        <div class="p-inputgroup justify-content-center">
+            <button pButton pRipple label="Đăng ký bằng tài khoản Google" class=" p-button-primary">
+                <i class="pi pi-google text-pink-400 mr-2"></i>
+            </button>
+        </div>
+
+    </div>
+</div>
+
