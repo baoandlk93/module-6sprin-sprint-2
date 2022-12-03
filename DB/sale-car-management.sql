@@ -31,6 +31,7 @@ create table if not exists customer_type(
     is_delete bit default 0
 );
 
+
 create table if not exists customer(
 	id int primary key auto_increment,
 	name varchar(30),
@@ -46,18 +47,41 @@ create table if not exists customer(
 	foreign key (username) references user(username),
 	foreign key (customer_type_id) references customer_type(id)
 );
+create table if not exists gear(
+id int primary key auto_increment,
+name varchar(45)
+);
 create table car(
 id int auto_increment primary key,
 name varchar(45),
 brand_id int,
+gear_id int,
 color varchar(45),
 price double,
 year int,
 designs varchar(45),
 number_of_seat int,
-customer_id int,
+picture text,
 status bit default 1,
 is_delete bit default 0,
 foreign key(brand_id) references brand(id),
-foreign key(customer_id) references customer(id)
+foreign key(gear_id) references gear(id)
+);
+
+create table if not exists order_car(
+id int primary key auto_increment,
+start_date datetime,
+status bit default 1,
+customer_id int,
+car_id int,
+foreign key(customer_id) references customer(id),
+foreign key(car_id) references car(id)
+);
+create table if not exists blog(
+id int primary key auto_increment,
+content text,
+date_write datetime,
+car_id int,
+is_delete bit default 0,
+foreign key(car_id) references car(id)
 );
