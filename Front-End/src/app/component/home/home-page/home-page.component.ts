@@ -31,7 +31,6 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('data');
     this.paginate();
     this.sortOptions = [
       {label: 'Price High to Low', value: '!price'},
@@ -53,7 +52,7 @@ export class HomePageComponent implements OnInit {
   }
   paginate() {
     this.service.paginate(this.pageNumber, this.pageSize, this.name).subscribe(data => {
-      console.log(data);
+      console.log(data.content);
       this.allCars = new BehaviorSubject<Car[]>(data.content);
       this.total$ = new BehaviorSubject<number>(data.totalElements);
       this.totalElements = data.totalElements;

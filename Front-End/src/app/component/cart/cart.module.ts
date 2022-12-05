@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { CartComponent } from './cart/cart.component';
 import {DividerModule} from "primeng/divider";
 import {CartRoutingModule} from "./cart-routing.module";
+import {ButtonModule} from "primeng/button";
+import {PaginatorModule} from "primeng/paginator";
 
 
 
@@ -14,7 +16,9 @@ import {CartRoutingModule} from "./cart-routing.module";
     imports: [
         CommonModule,
         CartRoutingModule,
-        DividerModule
+        DividerModule,
+        ButtonModule,
+        PaginatorModule
     ]
 })
 export class CartModule { }

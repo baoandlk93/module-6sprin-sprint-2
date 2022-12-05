@@ -1,10 +1,10 @@
 <div class="surface-section px-4 py-8 md:px-6 lg:px-8">
     <div class="grid grid-nogutter align-items-center">
         <div class="col-12">
-            <div class="grid mt-4">
-                <div class="col-12 md:col-6 lg:col-3 mb-5 lg:mb-0">
+            <div class="grid mt-4"*ngFor="let car of carList | async">
+                <div class="col-12 md:col-6 lg:col-3 " >
                     <div class="mb-3 relative">
-                        <img src="assets/images/blocks/ecommerce/productlist/product-list-2-1.png" class="w-full" />
+                        <img src="{{car.picture}}" class="w-full" />
                         <button type="button" pRipple class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
                                 style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">
                             <i class="pi pi-shopping-cart mr-3 text-base"></i>
@@ -12,8 +12,8 @@
                         </button>
                     </div>
                     <div class="flex flex-column align-items-center">
-                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>
-                        <span class="text-xl text-900 mb-3">$150.00</span>
+                        <span class="text-xl text-900 font-medium mb-3">{{car.name}}</span>
+                        <span class="text-xl text-900 mb-3">{{car.price}}</span>
                         <div class="flex align-items-center mb-3">
                             <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
                                  [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(--bluegray-900)' : null" (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>
@@ -24,7 +24,7 @@
                             <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"
                                  [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(--blue-500)' : null" (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>
                         </div>
-                        <span class="text-500">Black</span>
+                        <span class="text-500">{{car.color}}</span>
                     </div>
                 </div>
                 <div class="col-12 md:col-6 lg:col-3 mb-5 lg:mb-0">
@@ -83,7 +83,7 @@
                         <button type="button" pRipple class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
                                 style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">
                             <i class="pi pi-shopping-cart mr-3 text-base"></i>
-                            <span class="text-base">Add to Cart</span>
+                            <span class="text-base">Mua xe</span>
                         </button>
                     </div>
                     <div class="flex flex-column align-items-center">
@@ -203,9 +203,25 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
+</div>
+<div class="grid align-items-center">
+    <div class="col-1">
+        <p-button icon="pi pi-refresh"></p-button>
+    </div>
+    <div class="col-10">
+        <p-paginator [first]="1"
+                     [rows]="limit"
+                     [totalRecords]="total|async"
+                     [showJumpToPageDropdown]="true" [showPageLinks]="false"></p-paginator>
+    </div>
+    <div class="col-1 grid justify-content-end">
+        <p-button icon="pi pi-search"></p-button>
+    </div>
+</div>
+<div class="image-gallery">
+    <img src="assets/showcase/images/demo/nature/nature.jpg" />
 </div>
 
 <p-divider styleClass="w-full border-gray-200 m-0"></p-divider>

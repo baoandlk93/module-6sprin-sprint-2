@@ -27,10 +27,19 @@ public class Car {
     private double price;
 
     private boolean status;
+    private String picture;
 
     private boolean isDelete;
 
     public Car() {
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public int getId() {

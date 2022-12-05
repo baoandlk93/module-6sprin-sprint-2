@@ -9,7 +9,7 @@ export interface Car {
   price?: number;
   design?: string;
   numberOfSeat?: number;
-  picture?: string;
+  image?: string;
   gear?: string;
   quantity?: number;
 }

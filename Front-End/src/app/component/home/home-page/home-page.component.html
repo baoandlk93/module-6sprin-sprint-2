@@ -17,21 +17,22 @@
                 [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
         <ng-template pTemplate="header">
         </ng-template>
-        <ng-template let-car pTemplate="item">
+        <ng-template let-car pTemplate="car">
             <div class="product-item text-black-alpha-90 " pAnimate enterClass="flip" leaveClass="fadeoutleft">
                 <div class="product-item-content">
                     <div class="mb-3 mt-3 ms-2">
-                        <img width="100%"
-                             src="https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/03q4/267348/buick-rainier-v-8-cxl-photo-5787-s-original.jpg"
+                        <img width="100%" height="256px"
+                             src="{{car.picture}}"
                              class="product-image"/>
                     </div>
                     <div>
                         <h4 class="mb-1">{{car.name}}</h4>
+                        <h4 class="mb-1">{{car.image}}</h4>
                         <h6 class="mt-0 mb-3">${{car.price}}</h6>
                         <!--                    <span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
                         <div class="car-buttons mt-5">
                             <p-button type="button" styleClass="p-button p-button-rounded mr-2"
-                                      icon="pi pi-search"></p-button>
+                                      icon="pi pi-search" [routerLink]="['car/detail',car.id]"></p-button>
                             <p-button type="button" styleClass="p-button-success p-button-rounded mr-2"
                                       icon="pi pi-star-fill"></p-button>
                             <p-button type="button" styleClass="p-button-help p-button-rounded"
@@ -165,12 +166,20 @@
                                       style="width: 2rem; height: 2rem">
                                     <i class="pi pi-cloud text-sm"></i>
                                 </span>
-                                <span>Chăm sóc khách hàng</span>
+                                <span>Liên hệ &nbsp;</span><span
+                                    class="text-red-500">chăm sóc khách hàng&nbsp; </span><span>dễ dàng</span>
                             </div>
                         </ng-template>
-                        <p class="line-height-3">Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque
-                            habitant morbi. Sit amet risus nullam eget felis eget. Feugiat pretium nibh ipsum consequat
-                            nisl vel pretium.</p>
+                        <p class="line-height-3">Tổng đài Bmt-showroom với số Hotline 0935 76 2014 rất dễ tìm kiếm và
+                            xuất hiện
+                            khắp mọi nơi từ Website, Email, Fanpage,... Hơn thế nữa, đội ngũ chăm sóc khách hàng
+                            Bmt-showroom
+                            cam kết 100% cuộc gọi sẽ được trả lời, nếu như bị gọi nhỡ (do quá tải) sẽ được gọi lại ngay
+                            lập tức. <br>
+
+                            Ngoài ra khách hàng có thể liên hệ với Bmt-showroom thông qua rất nhiều kênh khác nhau như:
+                            Email,
+                            Chat, Để lại đánh giá, bình luận ở các kênh mạng xã hội của Bmt-showroom.</p>
                     </p-accordionTab>
                     <p-accordionTab>
                         <ng-template pTemplate="header">
@@ -179,12 +188,14 @@
                                       style="width: 2rem; height: 2rem">
                                     <i class="pi pi-chart-bar text-sm"></i>
                                 </span>
-                                <span>Bảo dưỡng</span>
+                                <span class="text-red-500">Không hạn chế thời gian &nbsp;</span><span>trao đổi với các bạn tổng đài viên</span>
                             </div>
                         </ng-template>
-                        <p class="line-height-3">Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque
-                            habitant morbi. Sit amet risus nullam eget felis eget. Feugiat pretium nibh ipsum consequat
-                            nisl vel pretium.</p>
+                        <p class="line-height-3">Đội ngũ tổng đài viên của Bmt-showroom luôn luôn online 24/7 và sẵn sàng hỗ
+                            trợ giải đáp kịp thời các thắc mắc của Quý khách hàng. <br>
+
+                            Tổng đài CSKH Bmt-showroom sẽ thực sự là nơi luôn luôn nghe khi khách hàng gọi, theo đúng ý nghĩa
+                            của 1 tổng đài chăm sóc khách hàng thực sự.</p>
                     </p-accordionTab>
                     <p-accordionTab>
                         <ng-template pTemplate="header">
@@ -348,32 +359,32 @@
     <div class="grid">
         <div class="col-12 md:col-4 mb-4 px-5 block">
             <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
-                <img src="https://zingxe.vn/ContentCustom/images/block21-1.png">
+                <img height="128px" width="128px" src="https://zingxe.vn/ContentCustom/images/block21-1.png">
             </span>
         </div>
         <div class="col-12 md:col-4 mb-4 px-5 block">
             <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
-                <img src="https://zingxe.vn/ContentCustom/images/block21-2.png">
+                <img height="128px" width="128px" src="https://zingxe.vn/ContentCustom/images/block21-2.png">
             </span>
         </div>
         <div class="col-12 md:col-4 mb-4 px-5">
             <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
-                <img src="https://zingxe.vn/ContentCustom/images/block21-3.png">
+                <img height="128px" width="128px" src="https://zingxe.vn/ContentCustom/images/block21-3.png">
             </span>
         </div>
         <div class="col-12 md:col-4 mb-4 px-5">
             <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
-                <img src="https://zingxe.vn/ContentCustom/images/block21-4.png">
+                <img height="128px" width="128px" src="https://zingxe.vn/ContentCustom/images/block21-4.png">
             </span>
         </div>
         <div class="col-12 md:col-4 mb-4 px-5">
             <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
-                <img src="https://zingxe.vn/ContentCustom/images/block21-5.png">
+                <img height="128px" width="128px" src="https://zingxe.vn/ContentCustom/images/block21-5.png">
             </span>
         </div>
         <div class="col-12 md:col-4 md:mb-4 mb-0 px-3">
             <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
-                <img src="https://zingxe.vn/ContentCustom/images/block21-6.png">
+                <img height="128px" width="128px" src="https://zingxe.vn/ContentCustom/images/block21-6.png">
             </span>
         </div>
     </div>
