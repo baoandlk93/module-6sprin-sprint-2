@@ -2,24 +2,15 @@
 <div class="surface-overlay border-round p-4 shadow-4 relative w-full mb-2" style="max-width: 800px">
     <div class="grid justify-content-center">
         <div class="col-12 md:col-6 flex justify-content-center align-items-center mt-6 sm:mt-0">
-            <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [numVisible]="3" [containerStyle]="{maxWidth:'300px'}">
-                <ng-template pTemplate="item" let-item>
-                    <img [src]="'assets/images/blocks/ecommerce/productquickview/' + item" style="width: 100%; display: block;" />
-                </ng-template>
-                <ng-template pTemplate="thumbnail" let-item>
-                    <div class="grid grid-nogutter justify-content-center">
-                        <img [src]="'assets/images/blocks/ecommerce/productquickview/'+ item" width="50"/>
-                    </div>
-                </ng-template>
-            </p-galleria>
+            <p-image src="{{car.picture}}" alt="Image" width="250" [preview]="true"></p-image>
         </div>
         <div class="col-12 md:col-6 md:pl-5">
             <div class="flex justify-content-end">
                 <button pButton class="p-button-text p-button-plain p-button-rounded absolute md:static" icon="pi pi-times pi-2xl" style="right:.5rem;top:.5rem"></button>
             </div>
-            <div class="text-900 text-2xl font-medium mb-3">Product Title</div>
-            <div class="text-900 text-3xl font-bold mb-3">$120.00</div>
-            <p class="text-700 line-height-3 my-4 p-0">Pellentesque habitant morbi tristique senectus et netus et malesuada fames. Urna molestie at elementum eu facilisis.</p>
+            <div class="text-900 text-2xl font-medium mb-3">{{car.name}}</div>
+            <div class="text-900 text-3xl font-bold mb-3">${{car.price | number}}</div>
+            <p class="text-700 line-height-3 my-4 p-0">{{car.color}}</p>
             <div class="flex align-items-center mb-4">
                 <button type="button" pButton pRipple label="Add to Cart" class="mr-3 py-2"></button>
                 <button type="button" pButton pRipple icon="pi pi-heart" class="p-button-text"></button>

@@ -10,7 +10,7 @@ import {CarService} from "../../../service/car.service";
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  pageNumber = 1;
+  pageNumber = 0;
   pageSize = 5;
   name = '';
   total$: Observable<number>;
@@ -18,38 +18,17 @@ export class HomePageComponent implements OnInit {
   carNameDelete: string;
   totalElements: number;
   allCars: Observable<Car[]>;
-  sortOptions: SelectItem[];
-  sortOrder: number;
-
-  sortField: string;
-  sortKey: string;
   responsiveOptions: any;
 
 
-  constructor(private service: CarService,
-              private primengConfig: PrimeNGConfig) {
+  constructor(private service: CarService) {
   }
 
   ngOnInit(): void {
     this.paginate();
-    this.sortOptions = [
-      {label: 'Price High to Low', value: '!price'},
-      {label: 'Price Low to High', value: 'price'}
-    ];
+
   }
 
-  onSortChange(event) {
-    let value = event.value;
-
-    if (value.indexOf('!') === 0) {
-      this.sortOrder = -1;
-      this.sortField = value.substring(1, value.length);
-    }
-    else {
-      this.sortOrder = 1;
-      this.sortField = value;
-    }
-  }
   paginate() {
     this.service.paginate(this.pageNumber, this.pageSize, this.name).subscribe(data => {
       console.log(data.content);

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {CarService} from "../../../service/car.service";
+import {Car} from "../../../model/i-car";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-car-detail',
@@ -8,10 +11,20 @@ import { Component, OnInit } from '@angular/core';
 export class CarDetailComponent implements OnInit {
   images: any[];
   responsiveOptions: any;
+  id: number;
+  car: Car;
 
-  constructor() { }
+  constructor(private service: CarService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.id = Number(this.activatedRoute.snapshot.params['id']);
+    this.getCar(this.id);
   }
 
+  getCar(id: number){
+    this.service.getCarById(id).subscribe( data =>{
+      this.car = data;
+    } )
+  }
 }

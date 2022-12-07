@@ -1,228 +1,404 @@
-<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
-    <div class="grid grid-nogutter align-items-center">
-        <div class="col-12">
-            <div class="grid mt-4"*ngFor="let car of carList | async">
-                <div class="col-12 md:col-6 lg:col-3 " >
-                    <div class="mb-3 relative">
-                        <img src="{{car.picture}}" class="w-full" />
-                        <button type="button" pRipple class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
-                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">
-                            <i class="pi pi-shopping-cart mr-3 text-base"></i>
-                            <span class="text-base">Add to Cart</span>
-                        </button>
+<!--<div class="container grid">-->
+<!--<div class="col-12 md:col-2 text-center">-->
+<!--    <h5>Tìm tên xe</h5>-->
+<!--<span class="p-input-icon-left">-->
+<!--    <i class="pi pi-search"></i>-->
+<!--    <input type="text" pInputText placeholder="Nhập tên xe" [(ngModel)]="name"/>-->
+<!--</span>-->
+<!--    <div class="card">-->
+<!--        <h5>Hãng xe</h5>-->
+<!--        <p-multiSelect [options]="cities" [(ngModel)]="selectedCities3" defaultLabel="Select a City" optionLabel="name"-->
+<!--                       display="chip"></p-multiSelect>-->
+<!--    </div>-->
+<!--    <div class="card">-->
+<!--        <h5>Kiểm định</h5>-->
+<!--        <p-inputSwitch  [(ngModel)]="checked1"></p-inputSwitch>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <h5>Số Km đã đi: {{rangeValues[0] + ' - ' + rangeValues[1]}}</h5>-->
+<!--        <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>-->
+<!--    </div>-->
+<!--    <div class="card">-->
+<!--        <h5>Màu sắc</h5>-->
+<!--        <p-multiSelect [options]="cities" [(ngModel)]="selectedCities3" defaultLabel="Select a City" optionLabel="name"-->
+<!--                       display="chip"></p-multiSelect>-->
+<!--    </div>-->
+<!--    <div class="card">-->
+<!--        <h5> Nhiên liệu</h5>-->
+<!--        <p-multiSelect [options]="cities" [(ngModel)]="selectedCities3" defaultLabel="Select a City" optionLabel="name"-->
+<!--                       display="chip"></p-multiSelect>-->
+<!--    </div>-->
+<!--    <div class="card">-->
+<!--        <h5>Xuất xứ</h5>-->
+<!--        <p-multiSelect [options]="cities" [(ngModel)]="selectedCities3" defaultLabel="Select a City" optionLabel="name"-->
+<!--                       display="chip"></p-multiSelect>-->
+<!--    </div>-->
+<!--    <div class="card">-->
+<!--        <h5>Số chỗ ngồi</h5>-->
+<!--        <p-multiSelect [options]="cities" [(ngModel)]="selectedCities3" defaultLabel="Select a City" optionLabel="name"-->
+<!--                       display="chip"></p-multiSelect>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <h5>Năm sản xuất: {{rangeValues[0] + ' - ' + rangeValues[1]}}</h5>-->
+<!--        <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <h5>Giá xe: {{rangeValues[0] + ' - ' + rangeValues[1]}}</h5>-->
+<!--        <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="col-12 md:col-8 surface-section px-4 py-8 md:px-6 lg:px-8">-->
+<!--    <div class="grid grid-nogutter align-items-center">-->
+<!--        <div class="col-12">-->
+<!--            <div class="grid mt-4" *ngFor="let car of carList | async">-->
+<!--                <div class="col-12 md:col-6 lg:col-4 ">-->
+<!--                    <div class="mb-3 relative">-->
+<!--                        <img src="{{car.images}}"/>-->
+<!--                        <button type="button" pRipple-->
+<!--                                class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"-->
+<!--                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">-->
+<!--                            <i class="pi pi-shopping-cart mr-3 text-base"></i>-->
+<!--                            <span class="text-base">Add to Cart</span>-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                    <div class="flex flex-column align-items-center">-->
+<!--                        <span class="text-xl text-900 font-medium mb-3">{{car.name}}</span>-->
+<!--                        <span class="text-xl text-900 mb-3">{{car.price}}</span>-->
+<!--                        <div class="flex align-items-center mb-3">-->
+<!--                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"-->
+<!--                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-900)' : null"-->
+<!--                                 (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>-->
+<!--                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"-->
+<!--                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-500)' : null"-->
+<!--                                 (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>-->
+<!--                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"-->
+<!--                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(&#45;&#45;green-500)' : null"-->
+<!--                                 (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>-->
+<!--                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"-->
+<!--                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(&#45;&#45;blue-500)' : null"-->
+<!--                                 (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>-->
+<!--                        </div>-->
+<!--                        <span class="text-500">{{car.color}}</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--&lt;!&ndash;                <div class="col-12 md:col-6 lg:col-3 mb-5 lg:mb-0">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="mb-3 relative">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="assets/images/blocks/ecommerce/productlist/product-list-2-2.png" class="w-full"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <button type="button" pRipple&ndash;&gt;-->
+<!--&lt;!&ndash;                                class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"&ndash;&gt;-->
+<!--&lt;!&ndash;                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="pi pi-shopping-cart mr-3 text-base"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <span class="text-base">Add to Cart</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="flex flex-column align-items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-xl text-900 mb-3">$150.00</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="flex align-items-center mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-900)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(&#45;&#45;green-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(&#45;&#45;blue-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-500">Indigo</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-12 md:col-6 lg:col-3 mb-5 lg:mb-0">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="mb-3 relative">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="assets/images/blocks/ecommerce/productlist/product-list-2-3.png" class="w-full"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <button type="button" pRipple&ndash;&gt;-->
+<!--&lt;!&ndash;                                class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"&ndash;&gt;-->
+<!--&lt;!&ndash;                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="pi pi-shopping-cart mr-3 text-base"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <span class="text-base">Add to Cart</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="flex flex-column align-items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-xl text-900 mb-3">$150.00</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="flex align-items-center mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-900)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(&#45;&#45;green-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(&#45;&#45;blue-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-500">Purple</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-12 md:col-6 lg:col-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="mb-3 relative">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="assets/images/blocks/ecommerce/productlist/product-list-2-4.png" class="w-full"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <button type="button" pRipple&ndash;&gt;-->
+<!--&lt;!&ndash;                                class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"&ndash;&gt;-->
+<!--&lt;!&ndash;                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="pi pi-shopping-cart mr-3 text-base"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <span class="text-base">Mua xe</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="flex flex-column align-items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-xl text-900 mb-3">$150.00</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="flex align-items-center mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-900)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(&#45;&#45;green-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(&#45;&#45;blue-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-500">Cyan</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-12 md:col-6 lg:col-3 mt-5 mb-5 lg:mb-0">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="mb-3 relative">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="assets/images/blocks/ecommerce/categorypreview/category-preview-1-28.png"&ndash;&gt;-->
+<!--&lt;!&ndash;                             class="w-full"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <button type="button" pRipple&ndash;&gt;-->
+<!--&lt;!&ndash;                                class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"&ndash;&gt;-->
+<!--&lt;!&ndash;                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="pi pi-shopping-cart mr-3 text-base"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <span class="text-base">Add to Cart</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="flex flex-column align-items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-xl text-900 mb-3">$150.00</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="flex align-items-center mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-900)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(&#45;&#45;green-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(&#45;&#45;blue-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-500">Black</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-12 md:col-6 lg:col-3 mt-5 mb-5 lg:mb-0">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="mb-3 relative">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="assets/images/blocks/ecommerce/categorypreview/category-preview-1-29.png"&ndash;&gt;-->
+<!--&lt;!&ndash;                             class="w-full"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <button type="button" pRipple&ndash;&gt;-->
+<!--&lt;!&ndash;                                class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"&ndash;&gt;-->
+<!--&lt;!&ndash;                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="pi pi-shopping-cart mr-3 text-base"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <span class="text-base">Add to Cart</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="flex flex-column align-items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-xl text-900 mb-3">$150.00</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="flex align-items-center mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-900)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(&#45;&#45;green-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(&#45;&#45;blue-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-500">Indigo</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-12 md:col-6 lg:col-3 mt-5 mb-5 lg:mb-0">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="mb-3 relative">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="assets/images/blocks/ecommerce/categorypreview/category-preview-1-30.png"&ndash;&gt;-->
+<!--&lt;!&ndash;                             class="w-full"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <button type="button" pRipple&ndash;&gt;-->
+<!--&lt;!&ndash;                                class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"&ndash;&gt;-->
+<!--&lt;!&ndash;                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="pi pi-shopping-cart mr-3 text-base"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <span class="text-base">Add to Cart</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="flex flex-column align-items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-xl text-900 mb-3">$150.00</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="flex align-items-center mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-900)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(&#45;&#45;green-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(&#45;&#45;blue-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-500">Purple</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-12 md:col-6 lg:col-3 mt-5">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="mb-3 relative">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="assets/images/blocks/ecommerce/categorypreview/category-preview-1-31.png"&ndash;&gt;-->
+<!--&lt;!&ndash;                             class="w-full"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <button type="button" pRipple&ndash;&gt;-->
+<!--&lt;!&ndash;                                class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"&ndash;&gt;-->
+<!--&lt;!&ndash;                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="pi pi-shopping-cart mr-3 text-base"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <span class="text-base">Add to Cart</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="flex flex-column align-items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-xl text-900 mb-3">$150.00</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="flex align-items-center mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-900)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(&#45;&#45;bluegray-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(&#45;&#45;green-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(&#45;&#45;blue-500)' : null"&ndash;&gt;-->
+<!--&lt;!&ndash;                                 (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span class="text-500">Cyan</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="grid align-items-center">-->
+<!--    <div class="col-1">-->
+<!--        <p-button icon="pi pi-refresh"></p-button>-->
+<!--    </div>-->
+<!--    <div class="col-10">-->
+<!--        <p-paginator [first]="1"-->
+<!--                     [rows]="limit"-->
+<!--                     [totalRecords]="total|async"-->
+<!--                     [showJumpToPageDropdown]="true" [showPageLinks]="false"></p-paginator>-->
+<!--    </div>-->
+<!--    <div class="col-1 grid justify-content-end">-->
+<!--        <p-button icon="pi pi-search"></p-button>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="images-gallery">-->
+<!--    <img src="assets/showcase/images/demo/nature/nature.jpg"/>-->
+<!--</div>-->
+
+<!--<p-divider styleClass="w-full border-gray-200 m-0"></p-divider>-->
+<!--</div>-->
+
+
+<!--Test list thứ 2-->
+
+<div class="card">
+    <p-paginator [first]="page" [rows]="1" [totalRecords]="totalPage | async" (onPageChange)="onPageChange($event)"
+    ></p-paginator>
+    <p-dataView [value]="carList | async"
+                [rows]="limit"
+                filterBy="name"
+                [totalRecords]="total | async"
+                emptyMessage ="Không tìm thấy dữ liệu"
+                [sortField]="sortField"
+                [sortOrder]="sortOrder"
+                layout="grid"
+
+    >
+        <ng-template pTemplate="header">
+            <div class="flex flex-column md:flex-row md:justify-content-between">
+<!--                <p-dropdown [options]="cities" [(ngModel)]="selectedCities3" placeholder="Sắp xếp theo giá" styleClass="mb-2 md:mb-0"></p-dropdown>-->
+                <span class="p-input-icon-left mb-2 md:mb-0">
+                    <i class="pi pi-search"></i>
+                    <input type="search" pInputText placeholder="Tìm tên xe" [(ngModel)]="name" (change)="getListCar()">
+                </span>
+                <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+            </div>
+        </ng-template>
+        <ng-template let-car pTemplate="listItem">
+            <div class="col-12">
+                <div class="product-list-item">
+                    <img style="width: 75%;
+                                    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+                                    margin: 2rem 0;" src="{{car.picture}}" [alt]="car.name"/>
+                    <div class="product-list-detail">
+                        <div class="product-name">{{car.name}}</div>
+                        <div class="product-description">{{car.color}}</div>
+                        <i class="pi pi-tag product-category-icon"></i>
+                        <span class="product-category font-bold">{{car.brandName}}</span>
                     </div>
-                    <div class="flex flex-column align-items-center">
-                        <span class="text-xl text-900 font-medium mb-3">{{car.name}}</span>
-                        <span class="text-xl text-900 mb-3">{{car.price}}</span>
-                        <div class="flex align-items-center mb-3">
-                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(--bluegray-900)' : null" (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(--bluegray-500)' : null" (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(--green-500)' : null" (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(--blue-500)' : null" (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>
-                        </div>
-                        <span class="text-500">{{car.color}}</span>
-                    </div>
-                </div>
-                <div class="col-12 md:col-6 lg:col-3 mb-5 lg:mb-0">
-                    <div class="mb-3 relative">
-                        <img src="assets/images/blocks/ecommerce/productlist/product-list-2-2.png" class="w-full" />
-                        <button type="button" pRipple class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
-                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">
-                            <i class="pi pi-shopping-cart mr-3 text-base"></i>
-                            <span class="text-base">Add to Cart</span>
-                        </button>
-                    </div>
-                    <div class="flex flex-column align-items-center">
-                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>
-                        <span class="text-xl text-900 mb-3">$150.00</span>
-                        <div class="flex align-items-center mb-3">
-                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(--bluegray-900)' : null" (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(--bluegray-500)' : null" (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(--green-500)' : null" (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(--blue-500)' : null" (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>
-                        </div>
-                        <span class="text-500">Indigo</span>
-                    </div>
-                </div>
-                <div class="col-12 md:col-6 lg:col-3 mb-5 lg:mb-0">
-                    <div class="mb-3 relative">
-                        <img src="assets/images/blocks/ecommerce/productlist/product-list-2-3.png" class="w-full" />
-                        <button type="button" pRipple class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
-                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">
-                            <i class="pi pi-shopping-cart mr-3 text-base"></i>
-                            <span class="text-base">Add to Cart</span>
-                        </button>
-                    </div>
-                    <div class="flex flex-column align-items-center">
-                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>
-                        <span class="text-xl text-900 mb-3">$150.00</span>
-                        <div class="flex align-items-center mb-3">
-                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(--bluegray-900)' : null" (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(--bluegray-500)' : null" (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(--green-500)' : null" (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(--blue-500)' : null" (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>
-                        </div>
-                        <span class="text-500">Purple</span>
-                    </div>
-                </div>
-                <div class="col-12 md:col-6 lg:col-3">
-                    <div class="mb-3 relative">
-                        <img src="assets/images/blocks/ecommerce/productlist/product-list-2-4.png" class="w-full" />
-                        <button type="button" pRipple class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
-                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">
-                            <i class="pi pi-shopping-cart mr-3 text-base"></i>
-                            <span class="text-base">Mua xe</span>
-                        </button>
-                    </div>
-                    <div class="flex flex-column align-items-center">
-                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>
-                        <span class="text-xl text-900 mb-3">$150.00</span>
-                        <div class="flex align-items-center mb-3">
-                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(--bluegray-900)' : null" (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(--bluegray-500)' : null" (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(--green-500)' : null" (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(--blue-500)' : null" (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>
-                        </div>
-                        <span class="text-500">Cyan</span>
-                    </div>
-                </div>
-                <div class="col-12 md:col-6 lg:col-3 mt-5 mb-5 lg:mb-0">
-                    <div class="mb-3 relative">
-                        <img src="assets/images/blocks/ecommerce/categorypreview/category-preview-1-28.png" class="w-full" />
-                        <button type="button" pRipple class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
-                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">
-                            <i class="pi pi-shopping-cart mr-3 text-base"></i>
-                            <span class="text-base">Add to Cart</span>
-                        </button>
-                    </div>
-                    <div class="flex flex-column align-items-center">
-                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>
-                        <span class="text-xl text-900 mb-3">$150.00</span>
-                        <div class="flex align-items-center mb-3">
-                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(--bluegray-900)' : null" (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(--bluegray-500)' : null" (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(--green-500)' : null" (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(--blue-500)' : null" (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>
-                        </div>
-                        <span class="text-500">Black</span>
-                    </div>
-                </div>
-                <div class="col-12 md:col-6 lg:col-3 mt-5 mb-5 lg:mb-0">
-                    <div class="mb-3 relative">
-                        <img src="assets/images/blocks/ecommerce/categorypreview/category-preview-1-29.png" class="w-full" />
-                        <button type="button" pRipple class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
-                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">
-                            <i class="pi pi-shopping-cart mr-3 text-base"></i>
-                            <span class="text-base">Add to Cart</span>
-                        </button>
-                    </div>
-                    <div class="flex flex-column align-items-center">
-                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>
-                        <span class="text-xl text-900 mb-3">$150.00</span>
-                        <div class="flex align-items-center mb-3">
-                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(--bluegray-900)' : null" (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(--bluegray-500)' : null" (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(--green-500)' : null" (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(--blue-500)' : null" (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>
-                        </div>
-                        <span class="text-500">Indigo</span>
-                    </div>
-                </div>
-                <div class="col-12 md:col-6 lg:col-3 mt-5 mb-5 lg:mb-0">
-                    <div class="mb-3 relative">
-                        <img src="assets/images/blocks/ecommerce/categorypreview/category-preview-1-30.png" class="w-full" />
-                        <button type="button" pRipple class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
-                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">
-                            <i class="pi pi-shopping-cart mr-3 text-base"></i>
-                            <span class="text-base">Add to Cart</span>
-                        </button>
-                    </div>
-                    <div class="flex flex-column align-items-center">
-                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>
-                        <span class="text-xl text-900 mb-3">$150.00</span>
-                        <div class="flex align-items-center mb-3">
-                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(--bluegray-900)' : null" (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(--bluegray-500)' : null" (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(--green-500)' : null" (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(--blue-500)' : null" (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>
-                        </div>
-                        <span class="text-500">Purple</span>
-                    </div>
-                </div>
-                <div class="col-12 md:col-6 lg:col-3 mt-5">
-                    <div class="mb-3 relative">
-                        <img src="assets/images/blocks/ecommerce/categorypreview/category-preview-1-31.png" class="w-full" />
-                        <button type="button" pRipple class="border-1 border-white-alpha-20 border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer font-semibold"
-                                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); backdrop-filter: blur(4px);">
-                            <i class="pi pi-shopping-cart mr-3 text-base"></i>
-                            <span class="text-base">Add to Cart</span>
-                        </button>
-                    </div>
-                    <div class="flex flex-column align-items-center">
-                        <span class="text-xl text-900 font-medium mb-3">Product Name</span>
-                        <span class="text-xl text-900 mb-3">$150.00</span>
-                        <div class="flex align-items-center mb-3">
-                            <div class="flex-shrink-0 border-circle bg-black-alpha-90 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'black' ? '0 0 0 0.2rem var(--bluegray-900)' : null" (click)="color = 'black'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-bluegray-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'bluegray' ? '0 0 0 0.2rem var(--bluegray-500)' : null" (click)="color = 'bluegray'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-green-500 mr-1 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'green' ? '0 0 0 0.2rem var(--green-500)' : null" (click)="color = 'green'" style="width:1.2rem; height:1.2rem;"></div>
-                            <div class="flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                 [style.box-shadow]="color === 'blue' ? '0 0 0 0.2rem var(--blue-500)' : null" (click)="color = 'blue'" style="width:1.2rem; height:1.2rem;"></div>
-                        </div>
-                        <span class="text-500">Cyan</span>
+                    <div class="product-list-action" style="display: flex;flex-direction: column;">
+                        <span class="product-price">${{car.price | number}}</span>
+                        <p-button style="display: flex;align-items: center;justify-content: space-between;" icon="pi pi-shopping-cart" label="Add to Cart" [disabled]="car.status === false"></p-button>
+                        <span>{{car.status}}</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </ng-template>
+        <ng-template let-car pTemplate="gridItem">
+            <div class="col-12 md:col-4 p-1">
+                <div class="product-grid-item card">
+                    <div class="product-grid-item-top">
+<!--                        <img width="64px" height="32px" src="{{car.picture}}" [alt]="car.name"/>-->
+                        <div class="lg:align-content-center">
+                            <i class="pi pi-tag product-category-icon"></i>
+                            <span class="product-category font-bold">{{car.brandName}}</span>
+                        </div>
+<!--                        <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
+                    </div>
+                    <div class="product-grid-item-content">
+                        <img style="width: 75%;
+                                    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+                                    margin: 2rem 0;" src="{{car.picture}}"/>
+                        <div class="product-name text-black-alpha-90 font-bold">Tên xe: {{car.name}}</div>
+                        <div class="product-description">Màu sắc: {{car.color}}</div>
+                        <div class="product-description">Kiểu dáng: {{car.designs}}</div>
+                        <div class="product-description"> Nhiên liệu sử dụng: {{car.fuel}}</div>
+<!--                        <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
+                    </div>
+                    <div class="product-grid-item-bottom" style="display: flex;align-items: center;justify-content: space-between;">
+                        <span class="product-price">Giá: ${{car.price | number}}</span>
+                        <p-button styleClass="p-button-outlined p-button-danger">
+                            <i class="pi pi-shopping-cart"></i>
+                            <span class="ml-2 font-bold">Liên hệ</span>
+                        </p-button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+    <p-paginator [first]="page" [rows]="1" [totalRecords]="totalPage | async" (onPageChange)="onPageChange($event)"
+    ></p-paginator>
 </div>
-<div class="grid align-items-center">
-    <div class="col-1">
-        <p-button icon="pi pi-refresh"></p-button>
-    </div>
-    <div class="col-10">
-        <p-paginator [first]="1"
-                     [rows]="limit"
-                     [totalRecords]="total|async"
-                     [showJumpToPageDropdown]="true" [showPageLinks]="false"></p-paginator>
-    </div>
-    <div class="col-1 grid justify-content-end">
-        <p-button icon="pi pi-search"></p-button>
-    </div>
-</div>
-<div class="image-gallery">
-    <img src="assets/showcase/images/demo/nature/nature.jpg" />
-</div>
-
-<p-divider styleClass="w-full border-gray-200 m-0"></p-divider>
-

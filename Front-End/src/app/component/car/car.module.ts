@@ -23,6 +23,7 @@ import {RadioButtonModule} from "primeng/radiobutton";
 import {DialogModule} from "primeng/dialog";
 import {ToastModule} from "primeng/toast";
 import {GalleriaModule} from "primeng/galleria";
+import {ImageModule} from "primeng/image";
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import {GalleriaModule} from "primeng/galleria";
         RadioButtonModule,
         DialogModule,
         ToastModule,
-        GalleriaModule
+        GalleriaModule,
+        ImageModule
     ]
 })
 export class CarModule { }

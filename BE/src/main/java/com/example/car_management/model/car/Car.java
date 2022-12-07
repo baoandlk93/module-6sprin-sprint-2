@@ -28,6 +28,13 @@ public class Car {
 
     private boolean status;
     private String picture;
+    private String fuel;
+    private boolean accreditation;
+    private String origin;
+    private int numberOfMileTraveled;
+    private String driveShaft;
+    private String engineDisplacement;
+
 
     private boolean isDelete;
 
@@ -40,6 +47,54 @@ public class Car {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public String getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(String fuel) {
+        this.fuel = fuel;
+    }
+
+    public boolean isAccreditation() {
+        return accreditation;
+    }
+
+    public void setAccreditation(boolean accreditation) {
+        this.accreditation = accreditation;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public int getNumberOfMileTraveled() {
+        return numberOfMileTraveled;
+    }
+
+    public void setNumberOfMileTraveled(int numberOfMileTraveled) {
+        this.numberOfMileTraveled = numberOfMileTraveled;
+    }
+
+    public String getDriveShaft() {
+        return driveShaft;
+    }
+
+    public void setDriveShaft(String driveShaft) {
+        this.driveShaft = driveShaft;
+    }
+
+    public String getEngineDisplacement() {
+        return engineDisplacement;
+    }
+
+    public void setEngineDisplacement(String engineDisplacement) {
+        this.engineDisplacement = engineDisplacement;
     }
 
     public int getId() {

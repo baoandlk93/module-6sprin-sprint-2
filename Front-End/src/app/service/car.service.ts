@@ -13,8 +13,8 @@ export class CarService {
   constructor(private http: HttpClient) { }
 
   paginate(page: number, limit: number, name: string): Observable<SearchResult<Car>> {
-    console.log(API_URL + '/car/list' + '?page=' + (page - 1) + '&size=' + limit + 'name=' + name);
-    return this.http.get<SearchResult<Car>>(API_URL + '/car/list' + '?page=' + (page - 1) + '&size=' + limit + 'name=' + name);
+    console.log(API_URL + '/car/list' + '?page=' + page + '&size=' + limit + '&name=' + name);
+    return this.http.get<SearchResult<Car>>(API_URL + '/car/list' + '?page=' + (page - 1) + '&size=' + limit + '&name=' + name);
   }
 
   createCar(car: Car): Observable<Car> {

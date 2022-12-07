@@ -5,6 +5,13 @@ import {DividerModule} from "primeng/divider";
 import {CartRoutingModule} from "./cart-routing.module";
 import {ButtonModule} from "primeng/button";
 import {PaginatorModule} from "primeng/paginator";
+import {InputTextModule} from "primeng/inputtext";
+import {MultiSelectModule} from "primeng/multiselect";
+import {RippleModule} from "primeng/ripple";
+import {InputSwitchModule} from "primeng/inputswitch";
+import {SliderModule} from "primeng/slider";
+import {DataViewModule} from "primeng/dataview";
+import {RatingModule} from "primeng/rating";
 
 
 
@@ -18,7 +25,14 @@ import {PaginatorModule} from "primeng/paginator";
         CartRoutingModule,
         DividerModule,
         ButtonModule,
-        PaginatorModule
+        PaginatorModule,
+        InputTextModule,
+        MultiSelectModule,
+        RippleModule,
+        InputSwitchModule,
+        SliderModule,
+        DataViewModule,
+        RatingModule
     ]
 })
 export class CartModule { }

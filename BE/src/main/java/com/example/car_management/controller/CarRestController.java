@@ -1,7 +1,6 @@
 package com.example.car_management.controller;
 
-import com.example.car_management.dto.customer.ICustomerDto;
-import com.example.car_management.model.car.Car;
+import com.example.car_management.dto.ICarDto;
 import com.example.car_management.service.car.ICarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,12 +9,9 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/api/car")
@@ -26,13 +22,23 @@ public class CarRestController {
 
 
     @GetMapping("/list")
-    public ResponseEntity<Page<Car>> getAllCar(@RequestParam(value = "name", defaultValue = "") String name,
-                                               @PageableDefault Pageable pageable) {
-        Page<Car> promotions = service.findAllCar(pageable, name);
-        if (promotions.isEmpty()) {
+    public ResponseEntity<Page<ICarDto>> getAllCar(@RequestParam(value = "name", defaultValue = "") String name,
+                                               @PageableDefault(value = 9, sort = "id") Pageable pageable) {
+        Page<ICarDto> cars = service.findAllCar(pageable, name);
+        if (cars.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
-            return new ResponseEntity<>(promotions, HttpStatus.OK);
+            return new ResponseEntity<>(cars, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<ICarDto> getCar(@PathVariable int id) {
+        Optional<ICarDto> car = service.findById(id);
+        if (!car.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(car.get(), HttpStatus.OK);
         }
     }
 }

@@ -132,7 +132,7 @@ export class CarListComponent implements OnInit {
       }
       else {
         this.product.id = this.createId();
-        this.product.image = 'product-placeholder.svg';
+        this.product.picture = 'product-placeholder.svg';
         this.products.push(this.product);
         this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Created', life: 3000});
       }

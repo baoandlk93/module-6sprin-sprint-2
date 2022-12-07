@@ -14,10 +14,8 @@ import {Router} from "@angular/router";
   ]
 })
 export class LoginComponent implements OnInit {
-  value4: string;
   value1: string;
   value2: string;
-  value3: string;
 
   constructor(private router: Router) { }
 
@@ -25,6 +23,6 @@ export class LoginComponent implements OnInit {
   }
 
     register() {
-        this.router.navigateByUrl('decentralization/register');
+        this.router.navigateByUrl('/register');
     }
 }

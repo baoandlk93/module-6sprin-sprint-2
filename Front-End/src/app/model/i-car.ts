@@ -4,12 +4,16 @@ export interface Car {
   id?: string;
   name?: string;
   year?: number;
-  brand?: string;
+  brandName?: string;
   color?: string;
   price?: number;
-  design?: string;
+  designs?: string;
   numberOfSeat?: number;
-  image?: string;
-  gear?: string;
+  picture?: string;
+  gearName?: string;
   quantity?: number;
+  numberOfMileTraveled?: number;
+  driveShaft?: string;
+  engineDisplacement?: string
+  fuel?: string;
 }

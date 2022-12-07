@@ -16,7 +16,7 @@ const routes: Routes = [
     path: 'list', component: CarListComponent
   },
   {
-    path: 'detail', component: CarDetailComponent
+    path: 'detail/:id', component: CarDetailComponent
   }
 ];
 
