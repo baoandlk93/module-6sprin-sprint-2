@@ -323,82 +323,107 @@
 
 
 <!--Test list thứ 2-->
+<div class="row">
+<div class="col-2 p-0 m-0"></div>
+<div class="col-8 p-0 m-0">
+    <div class="card">
+        <p-paginator [first]="page" [rows]="1" [totalRecords]="totalPage | async" (onPageChange)="onPageChange($event)"
+        ></p-paginator>
+        <p-dataView [value]="carList$ | async"
+                    [rows]="limit"
+                    filterBy="name"
+                    [totalRecords]="total | async"
+                    emptyMessage ="Không tìm thấy dữ liệu"
+                    [sortField]="sortField"
+                    [sortOrder]="sortOrder"
+                    layout="grid"
 
-<div class="card">
-    <p-paginator [first]="page" [rows]="1" [totalRecords]="totalPage | async" (onPageChange)="onPageChange($event)"
-    ></p-paginator>
-    <p-dataView [value]="carList | async"
-                [rows]="limit"
-                filterBy="name"
-                [totalRecords]="total | async"
-                emptyMessage ="Không tìm thấy dữ liệu"
-                [sortField]="sortField"
-                [sortOrder]="sortOrder"
-                layout="grid"
-
-    >
-        <ng-template pTemplate="header">
-            <div class="flex flex-column md:flex-row md:justify-content-between">
-<!--                <p-dropdown [options]="cities" [(ngModel)]="selectedCities3" placeholder="Sắp xếp theo giá" styleClass="mb-2 md:mb-0"></p-dropdown>-->
-                <span class="p-input-icon-left mb-2 md:mb-0">
+        >
+            <ng-template pTemplate="header">
+                <div class="flex flex-column md:flex-row md:justify-content-between">
+                    <!--                <p-dropdown [options]="cities" [(ngModel)]="selectedCities3" placeholder="Sắp xếp theo giá" styleClass="mb-2 md:mb-0"></p-dropdown>-->
+                    <span class="p-input-icon-left mb-2 md:mb-0">
                     <i class="pi pi-search"></i>
                     <input type="search" pInputText placeholder="Tìm tên xe" [(ngModel)]="name" (change)="getListCar()">
                 </span>
-                <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
-            </div>
-        </ng-template>
-        <ng-template let-car pTemplate="listItem">
-            <div class="col-12">
-                <div class="product-list-item">
-                    <img style="width: 75%;
+                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                </div>
+            </ng-template>
+            <ng-template let-car pTemplate="listItem">
+                <div class="col-12">
+                    <div class="product-list-item">
+                        <img style="width: 100%;
                                     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
                                     margin: 2rem 0;" src="{{car.picture}}" [alt]="car.name"/>
-                    <div class="product-list-detail">
-                        <div class="product-name">{{car.name}}</div>
-                        <div class="product-description">{{car.color}}</div>
-                        <i class="pi pi-tag product-category-icon"></i>
-                        <span class="product-category font-bold">{{car.brandName}}</span>
-                    </div>
-                    <div class="product-list-action" style="display: flex;flex-direction: column;">
-                        <span class="product-price">${{car.price | number}}</span>
-                        <p-button style="display: flex;align-items: center;justify-content: space-between;" icon="pi pi-shopping-cart" label="Add to Cart" [disabled]="car.status === false"></p-button>
-                        <span>{{car.status}}</span>
-                    </div>
-                </div>
-            </div>
-        </ng-template>
-        <ng-template let-car pTemplate="gridItem">
-            <div class="col-12 md:col-4 p-1">
-                <div class="product-grid-item card">
-                    <div class="product-grid-item-top">
-<!--                        <img width="64px" height="32px" src="{{car.picture}}" [alt]="car.name"/>-->
-                        <div class="lg:align-content-center">
+                        <div class="product-list-detail ">
+                            <div class="product-name text-2xl font-bold">{{car.name}}</div>
                             <i class="pi pi-tag product-category-icon"></i>
                             <span class="product-category font-bold">{{car.brandName}}</span>
+                            <div class="product-description">
+                                <span class="font-bold">Màu sắc: </span>
+                                {{car.color}}
+                            </div>
                         </div>
-<!--                        <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
-                    </div>
-                    <div class="product-grid-item-content">
-                        <img style="width: 75%;
-                                    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-                                    margin: 2rem 0;" src="{{car.picture}}"/>
-                        <div class="product-name text-black-alpha-90 font-bold">Tên xe: {{car.name}}</div>
-                        <div class="product-description">Màu sắc: {{car.color}}</div>
-                        <div class="product-description">Kiểu dáng: {{car.designs}}</div>
-                        <div class="product-description"> Nhiên liệu sử dụng: {{car.fuel}}</div>
-<!--                        <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
-                    </div>
-                    <div class="product-grid-item-bottom" style="display: flex;align-items: center;justify-content: space-between;">
-                        <span class="product-price">Giá: ${{car.price | number}}</span>
-                        <p-button styleClass="p-button-outlined p-button-danger">
-                            <i class="pi pi-shopping-cart"></i>
-                            <span class="ml-2 font-bold">Liên hệ</span>
-                        </p-button>
+                        <div class="product-list-action" style="display: flex;flex-direction: column;">
+                        <span class="product-price">
+                            <span class="font-bold">Giá: </span>
+                            {{car.price | number}}
+                        </span>
+                            <p-button style="display: flex;align-items: center;justify-content: space-between;" icon="pi pi-shopping-cart" label="Đặt cọc" [disabled]="car.status === false"></p-button>
+                            <span>{{car.status}}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </ng-template>
-    </p-dataView>
-    <p-paginator [first]="page" [rows]="1" [totalRecords]="totalPage | async" (onPageChange)="onPageChange($event)"
-    ></p-paginator>
+            </ng-template>
+            <ng-template let-car pTemplate="gridItem">
+                <div class="col-12 md:col-4 p-1">
+                    <div class="product-grid-item card">
+                        <div class="product-grid-item-top">
+                            <!--                        <img width="64px" height="32px" src="{{car.picture}}" [alt]="car.name"/>-->
+                            <div class="lg:align-content-center">
+                                <i class="pi pi-tag product-category-icon"></i>
+                                <span class="product-category font-bold">{{car.brandName}}</span>
+                            </div>
+                            <!--                        <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
+                        </div>
+                        <div class="product-grid-item-content">
+                            <div class="p-image-action w-full">
+                                <a (click)="showDetail(car.id)">
+                                <img style="width: 100%;
+                                    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+                                    margin: 2rem 0; height: 50%;"
+                                     src="{{car.picture}}" width="100%"/>
+                                </a>
+                            </div>
+                            <div class="product-name text-black-alpha-90 text-2xl font-bold text-center">{{car.name}}</div>
+                            <div class="product-description">
+                                <span class="font-bold">Màu sắc: </span>
+                                {{car.color}}</div>
+                            <div class="product-description">
+                                <span class="font-bold">Kiểu dáng: </span>
+                                {{car.designs}}</div>
+                            <div class="product-description">
+                                <span class="font-bold">Nhiên liệu sử dụng: </span>
+                                {{car.fuel}}</div>
+                            <!--                        <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>-->
+                        </div>
+                        <div class="product-grid-item-bottom" style="display: flex;align-items: center;justify-content: space-between;">
+                        <span class="product-price">
+                            <span class="font-bold">Giá: </span>
+                            {{car.price | number}}$</span>
+                            <p-button styleClass="p-button-outlined p-button-danger">
+                                <i class="pi pi-shopping-cart"></i>
+                                <span class="ml-2 font-bold">Đặt cọc</span>
+                            </p-button>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-dataView>
+        <p-paginator [first]="page" [rows]="1" [totalRecords]="totalPage | async" (onPageChange)="onPageChange($event)"
+        ></p-paginator>
+    </div>
 </div>
+<div class="col-2 p-0 m-0"></div>
+</div>
+

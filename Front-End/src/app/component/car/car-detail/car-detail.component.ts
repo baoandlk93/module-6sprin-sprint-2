@@ -20,6 +20,7 @@ export class CarDetailComponent implements OnInit {
   ngOnInit(): void {
     this.id = Number(this.activatedRoute.snapshot.params['id']);
     this.getCar(this.id);
+    window.scroll(0,0);
   }
 
   getCar(id: number){

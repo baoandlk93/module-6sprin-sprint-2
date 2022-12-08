@@ -1,18 +1,29 @@
 
-<div class="surface-overlay border-round p-4 shadow-4 relative w-full mb-2" style="max-width: 800px">
+<div class="surface-overlay border-round p-4 shadow-4 relative w-full mb-2" >
     <div class="grid justify-content-center">
         <div class="col-12 md:col-6 flex justify-content-center align-items-center mt-6 sm:mt-0">
-            <p-image src="{{car.picture}}" alt="Image" width="250" [preview]="true"></p-image>
+            <p-image src="{{car.picture}}" alt="Image" width="100%" [preview]="true"></p-image>
         </div>
         <div class="col-12 md:col-6 md:pl-5">
             <div class="flex justify-content-end">
-                <button pButton class="p-button-text p-button-plain p-button-rounded absolute md:static" icon="pi pi-times pi-2xl" style="right:.5rem;top:.5rem"></button>
+                <button [routerLink]="['/home']" pButton class="p-button-text p-button-plain p-button-rounded absolute md:static" icon="pi pi-times pi-2xl" style="right:.5rem;top:.5rem"></button>
             </div>
-            <div class="text-900 text-2xl font-medium mb-3">{{car.name}}</div>
-            <div class="text-900 text-3xl font-bold mb-3">${{car.price | number}}</div>
-            <p class="text-700 line-height-3 my-4 p-0">{{car.color}}</p>
+            <div class="text-900 text-3xl font-medium mb-3">
+                <span class=font-bold> Tên xe: </span>
+                <span>{{car.name}}</span>
+            </div>
+            <div class="text-900   mb-3">
+                <span class="font-bold">Giá: </span>
+               <span>{{car.price | number}} &nbsp;</span>
+                <span>$ </span>
+            </div>
+            <p class="text-700 line-height-3 my-4 p-0">
+                <span class="font-bold">Màu sắc: </span>
+                <span>{{car.color}}</span>
+
+            </p>
             <div class="flex align-items-center mb-4">
-                <button type="button" pButton pRipple label="Add to Cart" class="mr-3 py-2"></button>
+                <button type="button" pButton pRipple label="Đặt cọc" class="mr-3 py-2"></button>
                 <button type="button" pButton pRipple icon="pi pi-heart" class="p-button-text"></button>
             </div>
             <div class="flex align-items-center mb-4">
