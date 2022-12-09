@@ -1,6 +1,6 @@
 export interface Car {
   description: string;
-  inventoryStatus: string;
+  status: string;
   id?: string;
   name?: string;
   year?: number;

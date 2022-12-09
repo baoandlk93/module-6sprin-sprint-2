@@ -12,6 +12,7 @@ import {InputSwitchModule} from "primeng/inputswitch";
 import {SliderModule} from "primeng/slider";
 import {DataViewModule} from "primeng/dataview";
 import {RatingModule} from "primeng/rating";
+import {DialogModule} from "primeng/dialog";
 
 
 
@@ -32,7 +33,8 @@ import {RatingModule} from "primeng/rating";
         InputSwitchModule,
         SliderModule,
         DataViewModule,
-        RatingModule
+        RatingModule,
+        DialogModule
     ]
 })
 export class CartModule { }

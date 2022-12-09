@@ -19,7 +19,7 @@ import {ConfirmationService, MessageService, PrimeNGConfig, SelectItem} from "pr
 })
 export class CarListComponent implements OnInit {
   pageNumber = 1;
-  pageSize = 5;
+  pageSize = 10;
   name = '';
   total$: Observable<number>;
   carIdDelete: number;
@@ -81,7 +81,7 @@ export class CarListComponent implements OnInit {
     });
   }
   openNew() {
-    this.product = {description: "", inventoryStatus: ""};
+    this.product = {status: "", description: "", brandName: ""};
     this.submitted = false;
     this.productDialog = true;
   }
@@ -111,7 +111,7 @@ export class CarListComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.products = this.products.filter(val => val.id !== product.id);
-        this.product = {description: "", inventoryStatus: ""};
+        this.product = {description: "", status: ""};
         this.messageService.add({severity:'success', summary: 'Successful', detail: 'Product Deleted', life: 3000});
       }
     });
@@ -139,7 +139,7 @@ export class CarListComponent implements OnInit {
 
       this.products = [...this.products];
       this.productDialog = false;
-      this.product = {description: "", inventoryStatus: ""};
+      this.product = {description: "", status: ""};
     }
   }
 
