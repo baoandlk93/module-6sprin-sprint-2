@@ -14,14 +14,16 @@ import {InputTextareaModule} from "primeng/inputtextarea";
 import {AvatarModule} from "primeng/avatar";
 import {ScrollTopModule} from "primeng/scrolltop";
 import {AccordionModule} from "primeng/accordion";
+import {CustomPipe} from "../util/custom-pipe";
 
 
 @NgModule({
-  declarations: [
-    HomePageComponent,
-    HeaderComponent,
-    FooterComponent
-  ],
+    declarations: [
+        HomePageComponent,
+        HeaderComponent,
+        FooterComponent,
+        CustomPipe
+    ],
   exports: [
     HeaderComponent,
     FooterComponent

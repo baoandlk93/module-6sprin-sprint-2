@@ -5,7 +5,7 @@ import { DecentralizationRoutingModule } from './decentralization-routing.module
 import { LoginComponent } from './login/login.component';
 import {PasswordModule} from "primeng/password";
 import {DividerModule} from "primeng/divider";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ButtonModule} from "primeng/button";
 import {CheckboxModule} from "primeng/checkbox";
 import {StyleClassModule} from "primeng/styleclass";
@@ -40,7 +40,8 @@ import {InputTextareaModule} from "primeng/inputtextarea";
         RippleModule,
         CalendarModule,
         KeyFilterModule,
-        InputTextareaModule
+        InputTextareaModule,
+        ReactiveFormsModule
     ]
 })
 export class DecentralizationModule { }

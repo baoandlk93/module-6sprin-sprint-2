@@ -197,9 +197,13 @@
         </ul>
       </li>
     </ul>
-    <div class="flex justify-content-between lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0">
+    <div class="flex justify-content-between lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0" *ngIf="!username">
       <button pButton pRipple label="Đăng nhập" class="p-button-text text-red-500 hover:bg-blue-300 font-bold" routerLink="login"></button>
       <button pButton pRipple label="Đăng ký" class="ml-3 p-button-outlined font-bold text-red-500 hover:bg-blue-300" routerLink="register"></button>
+    </div>
+    <div class="flex justify-content-between lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0" *ngIf="username">
+      <p-avatar icon="pi pi-user" label="{{username | CustompPipe: 2 | uppercase}}" styleClass="mr-2" [style]="{'background-color': '#9c27b0', 'color': '#ffffff'}" shape="circle"></p-avatar>
+      <button pButton pRipple label="Đăng xuất" class="p-button-text text-red-500 hover:bg-blue-300 font-bold" (click)="whenLogout()"></button>
     </div>
   </div>
 </div>

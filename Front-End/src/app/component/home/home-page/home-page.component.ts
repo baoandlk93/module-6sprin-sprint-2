@@ -14,8 +14,6 @@ export class HomePageComponent implements OnInit {
   pageSize = 5;
   name = '';
   total$: Observable<number>;
-  carIdDelete: number;
-  carNameDelete: string;
   totalElements: number;
   allCars: Observable<Car[]>;
   responsiveOptions: any;
@@ -26,7 +24,6 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.paginate();
-
   }
 
   paginate() {

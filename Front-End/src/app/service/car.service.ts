@@ -1,16 +1,28 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {SearchResult} from "../model/search-result";
 import {Car} from "../model/i-car";
+import {TokenStorageService} from "./token-storage.service";
 const API_URL = environment.api_url;
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
+  httpOptions: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private tokenService: TokenStorageService) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.tokenService.getToken()
+      }),
+      'Access-Control-Allow-Origin': 'http://localhost:4200',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+    };
+  }
 
   paginate(page: number, limit: number, name: string): Observable<SearchResult<Car>> {
     console.log(API_URL + '/car/list' + '?page=' + page + '&size=' + limit + '&name=' + name);
@@ -31,6 +43,10 @@ export class CarService {
 
   getCarById(id: number): Observable<Car> {
     return this.http.get<Car>(API_URL + '/car/detail/' + id);
+  }
+
+  getUsername(): Observable<any> {
+    return this.http.get<any>(API_URL + '/customer/find-username/', this.httpOptions);
   }
 
 }

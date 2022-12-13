@@ -4,7 +4,9 @@ import com.example.car_management.dto.customer.CustomerDto;
 import com.example.car_management.dto.customer.ICustomerDto;
 import com.example.car_management.jwt.JwtTokenUtil;
 import com.example.car_management.model.customer.Customer;
+import com.example.car_management.model.decentralization.User;
 import com.example.car_management.service.customer.ICustomerService;
+import com.example.car_management.service.decentralization.IUserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,13 +35,17 @@ public class CustomerRestController {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
+    @Autowired
+    private IUserService userService;
+
     @GetMapping("/find-username")
-    public ResponseEntity<ICustomerDto> getCustomer(HttpServletRequest request) {
+    public ResponseEntity<?> showUsername(HttpServletRequest request) {
         String headerAuth = request.getHeader("Authorization");
         String username = jwtTokenUtil.getUsernameFromJwtToken(headerAuth.substring(7));
-        Optional<ICustomerDto> customerDto = iCustomerService.findCustomerByUsername(username);
-        if (customerDto.isPresent()) {
-            return new ResponseEntity<>(customerDto.get(), HttpStatus.OK);
+        System.out.println(username);
+        Optional<User> user = userService.showUsername(username);
+        if (user.isPresent()) {
+            return new ResponseEntity<>(user, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -112,22 +118,4 @@ public class CustomerRestController {
         BeanUtils.copyProperties(customer.get(), customerDto);
         return new ResponseEntity<>(customerDto, HttpStatus.OK);
     }
-
-    /**
-     * creator: Phan Phước Đại
-     * date:11/11/2022
-     * method use statistical top customer positive
-     */
-//    @GetMapping("/statement")
-//    public ResponseEntity<List<ICustomerStatementDto>> getCustomerTop(@RequestParam(defaultValue = "0") int numberMonth) {
-//        if (numberMonth < 0) {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//        List<ICustomerStatementDto> customerStatementDtoPage = iCustomerService.getCustomerTop(numberMonth);
-//        if (customerStatementDtoPage.isEmpty()) {
-//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        }
-//
-//        return new ResponseEntity<>(customerStatementDtoPage, HttpStatus.OK);
-//    }
 }
