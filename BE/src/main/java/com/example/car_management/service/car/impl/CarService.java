@@ -33,8 +33,18 @@ public class CarService implements ICarService {
     }
 
     @Override
-    public Optional<ICarDto> findById(int id) {
+    public Optional<ICarDto> findByIdDto(int id) {
         return repository.findByIdCar(id);
+    }
+
+    @Override
+    public Optional<Car> findById(int id) {
+        return repository.findCarById(id);
+    }
+
+    @Override
+    public void deleteCar(int id) {
+        repository.deleteCar(id);
     }
 
     @Override
@@ -45,5 +55,10 @@ public class CarService implements ICarService {
     @Override
     public List<Brand> brandList() {
         return brandRepository.findAll();
+    }
+
+    @Override
+    public List<ICarDto> findAllCarByCustomer(int id) {
+        return null;
     }
 }

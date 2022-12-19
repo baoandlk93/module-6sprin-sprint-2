@@ -1,3 +1,4 @@
+<!--ảnh đầu trang-->
 <div class="relative p-6 overflow-hidden">
     <img src="https://zingxe.vn/media/26257/content/da778c3c-79ea-40ca-b9ae-d8e238b6047a.png?size=2048" alt="Image"
          class="absolute top-0 left-0 w-auto h-full block md:w-full">
@@ -12,6 +13,7 @@
     </div>
 </div>
 
+<!--carousel sản phẩm-->
 <div class="surface-card relative p-6 overflow-hidden">
     <p-carousel [value]="allCars | async" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1"
                 [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
@@ -34,7 +36,7 @@
                             <p-button type="button" styleClass="p-button p-button-rounded mr-2"
                                       icon="pi pi-search" [routerLink]="['/car/detail/',car.id]"></p-button>
                             <p-button type="button" styleClass="p-button-success p-button-rounded mr-2"
-                                      icon="pi pi-star-fill"></p-button>
+                                      icon="pi pi-star-fill" ></p-button>
                             <p-button type="button" styleClass="p-button-help p-button-rounded"
                                       icon="pi pi-cog"></p-button>
                         </div>
@@ -43,9 +45,10 @@
             </div>
         </ng-template>
     </p-carousel>
+    <p-toast></p-toast>
 </div>
 
-<!--Nội dung thứ 2-->
+<!--Nội dung thứ 2 blog-->
 <div class="relative p-6 overflow-hidden ">
     <div class="font-bold text-4xl text-900 mb-5 text-center">Bài viết nổi bật</div>
     <div class="grid nogutter">
@@ -148,7 +151,7 @@
     </div>
 </div>
 
-
+<!--Các dịch vụ-->
 <div class="surface-section px-4 py-8 md:px-6 lg:px-8">
     <div class="font-bold text-900 text-4xl mb-3">Rất nhiều người đã hài lòng với các dịch vụ bên chúng tôi</div>
     <div class="text-700 mb-5 line-height-3">Bạn có thể xem các chi tiết về những dịch vụ chăm sóc của showroom chúng
@@ -320,6 +323,7 @@
     </div>
 </div>
 
+<!--Thống kê-->
 <div class="surface-ground px-4 py-8 md:px-6 lg:px-8">
     <div>
         <div class="text-900 font-bold text-4xl line-height-3 mb-3 text-center">Thống kê uy tín cửa hàng</div>
@@ -351,7 +355,7 @@
     </div>
 </div>
 
-
+<!--Các đối tác-->
 <div class="surface-section px-4 py-8 md:px-6 lg:px-8 text-center">
     <div class="text-900 font-bold text-4xl line-height-3 mb-3 text-center">Các đối tác của chúng tôi</div>
     <p class="text-600 line-height-3 text-lg m-0 mb-6 text-center">Excepteur sint occaecat cupidatat non proident,

@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
+      console.log(this.returnUrl);
       this.formGroup = this.formBuild.group({
           username: ['', Validators.required],
           password: ['', Validators.required],
@@ -65,9 +66,7 @@ export class LoginComponent implements OnInit {
       }
   }
   loadPage(): void{
-      // this.router.navigateByUrl('/home');
-      window.location.replace('/home');
-
+      window.location.replace('');
   }
 
     onSubmit() {
@@ -144,6 +143,6 @@ export class LoginComponent implements OnInit {
     }
 
     register() {
-        this.router.navigateByUrl('/register');
+        this.router.navigateByUrl('/login/register');
     }
 }

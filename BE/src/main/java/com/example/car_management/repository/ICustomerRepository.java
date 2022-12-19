@@ -20,7 +20,7 @@ import java.util.Optional;
 @Transactional
 public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
 
-    @Query(value = "select customer.name as name,customer.day_of_birth as dayOfBirth ,customer.gender as gender," +
+    @Query(value = "select customer.id as id, customer.name as name,customer.day_of_birth as dayOfBirth ,customer.gender as gender," +
             "customer.id_card as idCard,customer.email as email,customer.address as address,customer.phone_number as phoneNumber," +
             "user.username as username,user.`password` as password,customer.customer_type_id as customerTypeId  " +
             "from customer " +

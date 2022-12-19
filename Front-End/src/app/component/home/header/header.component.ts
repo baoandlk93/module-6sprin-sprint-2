@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {TokenStorageService} from "../../../service/token-storage.service";
-import {AuthService} from "../../../service/auth.service";
-import {CarService} from "../../../service/car.service";
 import Swal from "sweetalert2";
 
 @Component({
@@ -12,24 +10,34 @@ import Swal from "sweetalert2";
 })
 export class HeaderComponent implements OnInit {
     responsiveOptions: any;
-    username = '';
+    username: string = '';
+    roles: string[] = [];
+    isCustomer = false;
+    isAdmin = false;
+    isEmployee = false;
     currenUrl: string;
 
     constructor(private router: Router,
-                private tokenService: TokenStorageService,
-                private authService: AuthService,
-                private service: CarService) {
+                private tokenService: TokenStorageService) {
     }
 
     ngOnInit(): void {
-        this.showUsername()
+        this.showUsername();
 
     }
+
     showUsername() {
-        this.service.getUsername().subscribe(value => {
-            console.log(value);
-            this.username = value.username;
-        });
+        if (this.tokenService.isLogged()) {
+            this.username = this.tokenService.getUser().username;
+            this.roles = this.tokenService.getUser().roles;
+            this.isCustomer = this.roles.indexOf('ROLE_CUSTOMER') !== -1;
+            this.isEmployee = this.roles.indexOf('ROLE_EMPLOYEE') !== -1;
+            this.isAdmin = this.roles.indexOf('ROLE_ADMIN') !== -1;
+        }
+    }
+
+    loadPage(): void {
+        window.location.replace('');
     }
 
     whenLogout() {
@@ -42,6 +50,6 @@ export class HeaderComponent implements OnInit {
             showConfirmButton: false,
             timer: 1000
         });
-        this.router.navigateByUrl('home');
+        window.setTimeout(this.loadPage, 500);
     }
 }

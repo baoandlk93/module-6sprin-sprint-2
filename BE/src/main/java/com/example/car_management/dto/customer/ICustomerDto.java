@@ -1,6 +1,7 @@
 package com.example.car_management.dto.customer;
 
 public interface ICustomerDto {
+    Integer getId();
 
     String getName();
 

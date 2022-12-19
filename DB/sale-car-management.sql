@@ -51,6 +51,7 @@ create table if not exists gear(
 id int primary key auto_increment,
 name varchar(45)
 );
+
 create table car(
 id int auto_increment primary key,
 accreditation bit default 0,

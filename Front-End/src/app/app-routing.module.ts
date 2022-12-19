@@ -5,10 +5,11 @@ import {BlogModule} from "./component/blog/blog.module";
 import {CarModule} from "./component/car/car.module";
 import {DecentralizationModule} from "./component/decentralization/decentralization.module";
 import {CartModule} from "./component/cart/cart.module";
+import {ContractModule} from "./component/contract/contract.module";
 
 const routes: Routes = [
   {
-    path: 'home', loadChildren: () => HomeModule
+    path: '', loadChildren: () => HomeModule
   },
   {
     path: 'blog', loadChildren: () => BlogModule
@@ -17,10 +18,13 @@ const routes: Routes = [
     path: 'car', loadChildren: () => CarModule
   },
   {
-    path: '', loadChildren: () => DecentralizationModule
+    path: 'login', loadChildren: () => DecentralizationModule
   },
   {
     path: 'cart', loadChildren: () => CartModule
+  },
+  {
+    path:'contract',loadChildren: () => ContractModule
   }
 ];
 

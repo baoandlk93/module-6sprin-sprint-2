@@ -110,7 +110,7 @@
 
 <!--LỰA CHỌN THỨ 2-->
 <div class="surface-overlay py-3 px-6 shadow-2 flex align-items-center justify-content-between relative lg:static">
-  <a routerLink="home">
+  <a routerLink="">
     <img src="../../../../assets/images/blocks/logos/bootstrap4-light-purple.svg" alt="Image" height="50" class="mr-0 lg:mr-5">
   </a>
   <a class="cursor-pointer block lg:hidden text-700" pStyleClass="@next" enterClass="hidden" leaveToClass="hidden" [hideOnOutsideClick]="true">
@@ -164,6 +164,7 @@
             </ul>
           </li>
         </ul>
+
       </li>
       <li>
         <a routerLink="/cart" pRipple class="text-black-alpha-90 flex px-0 lg:px-5 py-3 hover:text-red-600 font-medium transition-colors transition-duration-150">
@@ -197,9 +198,76 @@
         </ul>
       </li>
     </ul>
+    <ul *ngIf="isAdmin" class="list-none p-0 m-0 flex lg:align-items-center text-dark select-none flex-column lg:flex-row cursor-pointer">
+      <li class="relative">
+        <a pRipple class="text-black-alpha-90 flex px-0 lg:px-5 py-3 align-items-center  hover:text-red-600 font-medium transition-colors transition-duration-150"
+           pStyleClass="@next" enterClass="hidden" enterActiveClass="scalein" leaveToClass="hidden" leaveActiveClass="fadeout" [hideOnOutsideClick]="true">
+          <span>Quản lý thành viên</span>
+          <i class="pi pi-chevron-down ml-auto lg:ml-3"></i>
+        </a>
+        <ul class="list-none p-0 m-0 border-round shadow-0 lg:shadow-2 lg:absolute surface-overlay hidden origin-top w-full lg:w-15rem">
+          <li>
+            <a pRipple class="text-black-alpha-90 flex p-3 align-items-center hover:surface-200 hover:text-red-600 transition-colors transition-duration-150">
+              <span> Thêm mới thành viên</span>
+            </a>
+          </li>
+          <li>
+            <a pRipple class="text-black-alpha-90 flex p-3 align-items-center text-center hover:surface-200 hover:text-red-600 transition-colors transition-duration-150">
+              <span>Danh sách thành viên</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="relative">
+        <a pRipple class="text-black-alpha-90 flex px-0 lg:px-5 py-3 align-items-center hover:text-red-600 font-medium transition-colors transition-duration-150"
+           pStyleClass="@next" enterClass="hidden" enterActiveClass="scalein" leaveToClass="hidden" leaveActiveClass="fadeout" [hideOnOutsideClick]="true">
+          <span>Quản lý xe</span>
+          <i class="pi pi-chevron-down ml-auto lg:ml-3"></i>
+        </a>
+        <ul class="list-none p-0 m-0 border-round shadow-0 lg:shadow-2 lg:absolute surface-overlay hidden origin-top w-full lg:w-15rem">
+          <li>
+            <a routerLink="car/list" pRipple class="text-black-alpha-90 flex p-3 align-items-center hover:surface-50 hover:text-red-600 transition-colors transition-duration-150">
+              <i class="pi pi-book text-2xl mr-2 text-blue-600"></i>
+              <span>Danh sách xe</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="car/create" pRipple class="text-black-alpha-90 flex p-3 align-items-center hover:surface-50 hover:text-red-600 transition-colors transition-duration-150">
+              <i class="pi pi-book text-2xl mr-2 text-blue-600"></i>
+              <span>Thêm mới xe</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+    <ul *ngIf="isCustomer" class="list-none p-0 m-0 flex lg:align-items-center text-dark select-none flex-column lg:flex-row cursor-pointer">
+      <li class="relative">
+        <a pRipple class="text-black-alpha-90 flex px-0 lg:px-5 py-3 align-items-center hover:text-red-600 font-medium transition-colors transition-duration-150"
+           pStyleClass="@next" enterClass="hidden" enterActiveClass="scalein" leaveToClass="hidden" leaveActiveClass="fadeout" [hideOnOutsideClick]="true">
+          <span>Hợp đồng</span>
+          <i class="pi pi-chevron-down ml-auto lg:ml-3"></i>
+        </a>
+        <ul class="list-none p-0 m-0 border-round shadow-0 lg:shadow-2 lg:absolute surface-overlay hidden origin-top w-full lg:w-15rem">
+          <li>
+            <a routerLink="contract/list" pRipple class="text-black-alpha-90 flex p-3 align-items-center hover:surface-50 hover:text-red-600 transition-colors transition-duration-150">
+              <i class="pi pi-book text-2xl mr-2 text-blue-600"></i>
+              <span>Danh sách hợp đồng</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="car/create" pRipple class="text-black-alpha-90 flex p-3 align-items-center hover:surface-50 hover:text-red-600 transition-colors transition-duration-150">
+              <i class="pi pi-book text-2xl mr-2 text-blue-600"></i>
+              <span>Thêm mới hợp đồng</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
     <div class="flex justify-content-between lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0" *ngIf="!username">
       <button pButton pRipple label="Đăng nhập" class="p-button-text text-red-500 hover:bg-blue-300 font-bold" routerLink="login"></button>
-      <button pButton pRipple label="Đăng ký" class="ml-3 p-button-outlined font-bold text-red-500 hover:bg-blue-300" routerLink="register"></button>
+      <button pButton pRipple label="Đăng ký" class="ml-3 p-button-outlined font-bold text-red-500 hover:bg-blue-300" routerLink="login/register"></button>
     </div>
     <div class="flex justify-content-between lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0" *ngIf="username">
       <p-avatar icon="pi pi-user" label="{{username | CustompPipe: 2 | uppercase}}" styleClass="mr-2" [style]="{'background-color': '#9c27b0', 'color': '#ffffff'}" shape="circle"></p-avatar>
@@ -207,3 +275,60 @@
     </div>
   </div>
 </div>
+<!--<div *ngIf="isAdmin" class="surface-overlay py-3 px-6 shadow-2 flex align-items-center justify-content-start relative lg:static">-->
+<!--  <a routerLink="">-->
+<!--    <img src="../../../../assets/images/blocks/logos/bootstrap4-light-purple.svg" alt="Image" height="50" class="mr-0 lg:mr-5">-->
+<!--  </a>-->
+<!--  <a class="cursor-pointer block lg:hidden text-700" pStyleClass="@next" enterClass="hidden" leaveToClass="hidden" [hideOnOutsideClick]="true">-->
+<!--    <i class="pi pi-bars text-4xl"></i>-->
+<!--  </a>-->
+<!--  <div class="align-items-center flex-grow-1 justify-content-between hidden lg:flex absolute lg:static w-full surface-overlay left-0 top-100 px-6 lg:px-0 z-2 shadow-2 lg:shadow-none">-->
+<!--    <section></section>-->
+<!--    <ul class="list-none p-0 m-0 flex lg:align-items-center text-dark select-none flex-column lg:flex-row cursor-pointer">-->
+<!--      <li class="relative">-->
+<!--        <a pRipple class="text-black-alpha-90 flex px-0 lg:px-5 py-3 align-items-center  hover:text-red-600 font-medium transition-colors transition-duration-150"-->
+<!--           pStyleClass="@next" enterClass="hidden" enterActiveClass="scalein" leaveToClass="hidden" leaveActiveClass="fadeout" [hideOnOutsideClick]="true">-->
+<!--          <span>Quản lý thành viên</span>-->
+<!--          <i class="pi pi-chevron-down ml-auto lg:ml-3"></i>-->
+<!--        </a>-->
+<!--        <ul class="list-none p-0 m-0 border-round shadow-0 lg:shadow-2 lg:absolute surface-overlay hidden origin-top w-full lg:w-15rem">-->
+<!--          <li>-->
+<!--            <a pRipple class="text-black-alpha-90 flex p-3 align-items-center hover:surface-200 hover:text-red-600 transition-colors transition-duration-150">-->
+<!--              <span> Thêm mới thành viên</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a pRipple class="text-black-alpha-90 flex p-3 align-items-center text-center hover:surface-200 hover:text-red-600 transition-colors transition-duration-150">-->
+<!--              <span>Danh sách thành viên</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </li>-->
+<!--      <li class="relative">-->
+<!--        <a pRipple class="text-black-alpha-90 flex px-0 lg:px-5 py-3 align-items-center hover:text-red-600 font-medium transition-colors transition-duration-150"-->
+<!--           pStyleClass="@next" enterClass="hidden" enterActiveClass="scalein" leaveToClass="hidden" leaveActiveClass="fadeout" [hideOnOutsideClick]="true">-->
+<!--          <span>Quản lý xe</span>-->
+<!--          <i class="pi pi-chevron-down ml-auto lg:ml-3"></i>-->
+<!--        </a>-->
+<!--        <ul class="list-none p-0 m-0 border-round shadow-0 lg:shadow-2 lg:absolute surface-overlay hidden origin-top w-full lg:w-15rem">-->
+<!--          <li>-->
+<!--            <a routerLink="car/list" pRipple class="text-black-alpha-90 flex p-3 align-items-center hover:surface-50 hover:text-red-600 transition-colors transition-duration-150">-->
+<!--              <i class="pi pi-book text-2xl mr-2 text-blue-600"></i>-->
+<!--              <span>Danh sách xe</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a routerLink="car/create" pRipple class="text-black-alpha-90 flex p-3 align-items-center hover:surface-50 hover:text-red-600 transition-colors transition-duration-150">-->
+<!--              <i class="pi pi-book text-2xl mr-2 text-blue-600"></i>-->
+<!--              <span>Thêm mới xe</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--    <div class="flex justify-content-between lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0" *ngIf="username">-->
+<!--      <p-avatar icon="pi pi-user" label="{{username | CustompPipe: 2 | uppercase}}" styleClass="mr-2" [style]="{'background-color': '#9c27b0', 'color': '#ffffff'}" shape="circle"></p-avatar>-->
+<!--      <button pButton pRipple label="Đăng xuất" class="p-button-text text-red-500 hover:bg-blue-300 font-bold" (click)="whenLogout()"></button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

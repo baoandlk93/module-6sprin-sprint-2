@@ -49,7 +49,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
                 .antMatchers("/api/public/**",
                         "/api/customer/**",
-                        "/api/car/**"
+                        "/api/car/**",
+                        "/api/order/**",
+//                        "/api/car/detail/**",
+                        "/api/brand/list",
+                        "/api/gear/list",
+                        "/api/contract/**"
                 )
                 .permitAll()
 

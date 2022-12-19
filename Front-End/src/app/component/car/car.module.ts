@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { CarRoutingModule } from './car-routing.module';
-import { AddNewCarComponent } from './add-new-car/add-new-car.component';
-import { EditCarComponent } from './edit-car/edit-car.component';
-import { CarListComponent } from './car-list/car-list.component';
-import { CarDetailComponent } from './car-detail/car-detail.component';
+import {CarRoutingModule} from './car-routing.module';
+import {AddNewCarComponent} from './add-new-car/add-new-car.component';
+import {EditCarComponent} from './edit-car/edit-car.component';
+import {CarListComponent} from './car-list/car-list.component';
+import {CarDetailComponent} from './car-detail/car-detail.component';
 import {InputTextModule} from "primeng/inputtext";
 import {DropdownModule} from "primeng/dropdown";
 import {InputTextareaModule} from "primeng/inputtextarea";
@@ -24,15 +24,18 @@ import {DialogModule} from "primeng/dialog";
 import {ToastModule} from "primeng/toast";
 import {GalleriaModule} from "primeng/galleria";
 import {ImageModule} from "primeng/image";
+import {PaginatorModule} from "primeng/paginator";
+import {CustomPipeBoolean} from "../util/CustomPipeBoolean";
+import {CartModule} from "../cart/cart.module";
 
 
 @NgModule({
-  declarations: [
-    AddNewCarComponent,
-    EditCarComponent,
-    CarListComponent,
-    CarDetailComponent
-  ],
+    declarations: [
+        AddNewCarComponent,
+        EditCarComponent,
+        CarListComponent,
+        CarDetailComponent
+    ],
     imports: [
         CommonModule,
         CarRoutingModule,
@@ -53,7 +56,10 @@ import {ImageModule} from "primeng/image";
         DialogModule,
         ToastModule,
         GalleriaModule,
-        ImageModule
+        ImageModule,
+        PaginatorModule,
+        CartModule
     ]
 })
-export class CarModule { }
+export class CarModule {
+}

@@ -15,6 +15,7 @@ import {AvatarModule} from "primeng/avatar";
 import {ScrollTopModule} from "primeng/scrolltop";
 import {AccordionModule} from "primeng/accordion";
 import {CustomPipe} from "../util/custom-pipe";
+import {ToastModule} from "primeng/toast";
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {CustomPipe} from "../util/custom-pipe";
         InputTextareaModule,
         AvatarModule,
         ScrollTopModule,
-        AccordionModule
+        AccordionModule,
+        ToastModule
     ]
 })
 export class HomeModule {

@@ -326,6 +326,7 @@
 <div class="row">
     <div class="col-2 p-0 m-0"></div>
     <div class="col-8 p-0 m-0">
+
         <div class="card">
             <p-paginator [first]="page" [rows]="1" [totalRecords]="totalPage | async"
                          (onPageChange)="onPageChange($event)"
@@ -360,7 +361,11 @@
                                     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
                                     margin: 2rem 0;" src="{{car.picture}}" [alt]="car.name"/>
                             <div class="product-list-detail ">
-                                <div class="product-name text-2xl font-bold">{{car.name}}</div>
+                                <div class="product-name text-2xl font-bold">
+                                    {{car.name}}
+                                    <p-button type="button" styleClass="p-button-success p-button-rounded mr-2"
+                                              icon="pi pi-star-fill" ></p-button>
+                                </div>
                                 <i class="pi pi-tag product-category-icon"></i>
                                 <span class="product-category font-bold">{{car.brandName}}</span>
                                 <div class="product-description">
@@ -373,10 +378,13 @@
                             <span class="font-bold">Giá: </span>
                             {{car.price | number}}
                         </span>
+                                <span style="color:green">{{car.status | PipeBoolean | uppercase}}</span>
+                                <span style="color:red"
+                                      *ngIf="car.status === false">{{car.status | PipeBoolean | uppercase}}</span>
                                 <p-button style="display: flex;align-items: center;justify-content: space-between;"
                                           icon="pi pi-shopping-cart" label="Đặt cọc"
-                                          [disabled]="car.status === false"></p-button>
-                                <span>{{car.status}}</span>
+                                          [disabled]="car.status === false" (click)="showPayment(car.price,car.name)"></p-button>
+
                             </div>
                         </div>
                     </div>
@@ -389,6 +397,7 @@
                                 <div class="lg:align-content-center">
                                     <i class="pi pi-tag product-category-icon"></i>
                                     <span class="product-category font-bold">{{car.brandName}}</span>
+
                                 </div>
                                 <!--                        <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>-->
                             </div>
@@ -401,7 +410,11 @@
                                              src="{{car.picture}}" width="100%"/>
                                     </a>
                                 </div>
-                                <div class="product-name text-black-alpha-90 text-2xl font-bold text-center">{{car.name}}</div>
+                                <div class="product-name text-black-alpha-90 text-2xl font-bold text-center">
+                                    {{car.name}}
+                                    <p-button type="button" styleClass="p-button-success p-button-rounded mr-2"
+                                              icon="pi pi-star-fill" ></p-button>
+                                </div>
                                 <div class="product-description">
                                     <span class="font-bold">Màu sắc: </span>
                                     {{car.color}}</div>
@@ -418,23 +431,48 @@
                         <span class="product-price">
                             <span class="font-bold">Giá: </span>
                             {{car.price | number}}$</span>
-                                <p-button styleClass="p-button-outlined p-button-danger">
+
+                                <p-button styleClass="p-button-outlined p-button-danger"
+                                          (click)="showPayment(car.price,car.name)">
                                     <i class="pi pi-shopping-cart"></i>
                                     <span class="ml-2 font-bold">Đặt cọc</span>
                                 </p-button>
+
                             </div>
                         </div>
                     </div>
                 </ng-template>
             </p-dataView>
+
             <p-paginator [first]="page" [rows]="1" [totalRecords]="totalPage | async"
                          (onPageChange)="onPageChange($event)"
             ></p-paginator>
         </div>
+        <p-dialog header="Chọn phương thức thanh toán" [(visible)]="displayPosition" [position]="position" [modal]="true"
+                  [style]="{width: '50vw'}"
+                  [draggable]="false" [resizable]="false" (onShow)="payment()">
+                <div id="myButtonPaypal">
+                    <div class="product-name text-black-alpha-90 text-2xl font-bold text-center">Tên xe: {{carName}}</div>
+                    <span class="product-price">
+                            <span class="font-bold">Giá: </span>
+                        {{totalMoney | number}}$
+                        </span>
+                    <br>
+                    <span class="product-price">
+                            <span class="font-bold">Số tiền cọc: </span>
+                        {{moneyPayment | number}}$
+                        </span>
+                </div>
+            <ng-template pTemplate="footer">
+                <p-button  icon="pi pi-check" (click)="displayPosition=false" label="Ok" styleClass="p-button-text"></p-button>
+            </ng-template>
+        </p-dialog>
+        <p-toast></p-toast>
     </div>
-    <p-dialog>
+    <div class="col-2 p-0 m-0">
+    </div>
 
-    </p-dialog>
-    <div class="col-2 p-0 m-0"></div>
 </div>
+
+
 

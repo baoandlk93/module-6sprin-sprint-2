@@ -13,10 +13,6 @@ export class TokenStorageService {
   constructor() {
   }
 
-  signOut() {
-    window.localStorage.clear();
-    window.sessionStorage.clear();
-  }
 
   logOut() {
     window.sessionStorage.clear();

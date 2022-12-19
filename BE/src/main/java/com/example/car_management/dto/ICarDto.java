@@ -17,5 +17,8 @@ public interface ICarDto {
     String getYear();
     String getBrandName();
     String getGearName();
+    String getStatus();
+
+
 
 }

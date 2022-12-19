@@ -10,6 +10,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {StyleClassModule} from 'primeng/styleclass';
 import {HttpClientModule} from "@angular/common/http";
 import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from "angularx-social-login";
+import {CustomPipeBoolean} from "./component/util/CustomPipeBoolean";
 
 const googleLoginOptions = {
     scope: 'profile email',

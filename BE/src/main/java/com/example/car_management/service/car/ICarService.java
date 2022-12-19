@@ -15,9 +15,14 @@ public interface ICarService {
 
     Page<ICarDto> findAllCar(Pageable pageable, String name);
 
-    Optional<ICarDto>findById(int id);
+    Optional<ICarDto> findByIdDto(int id);
+    Optional<Car> findById(int id);
+
+    void deleteCar(int id);
 
     List<Gear> gearList();
 
     List<Brand>brandList();
+
+    List<ICarDto> findAllCarByCustomer(int id);
 }

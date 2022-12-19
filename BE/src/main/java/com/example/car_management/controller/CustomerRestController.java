@@ -108,14 +108,12 @@ public class CustomerRestController {
         }
     }
 
-    @GetMapping("/find/{id}")
-    public ResponseEntity<CustomerDto> editCustomer(@PathVariable Integer id) {
-        Optional<Customer> customer = iCustomerService.findByIdCustomer(id);
+    @GetMapping("/find")
+    public ResponseEntity<ICustomerDto> editCustomer(@RequestParam(value = "username") String username) {
+        Optional<ICustomerDto> customer = iCustomerService.findCustomerByUsername(username);
         if (!customer.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        CustomerDto customerDto = new CustomerDto();
-        BeanUtils.copyProperties(customer.get(), customerDto);
-        return new ResponseEntity<>(customerDto, HttpStatus.OK);
+        return new ResponseEntity<>(customer.get(), HttpStatus.OK);
     }
 }
