@@ -1,7 +1,7 @@
 export interface Car {
   description: string;
   status: string;
-  id?: string;
+  id?: number;
   name?: string;
   year?: number;
   brandName?: string;

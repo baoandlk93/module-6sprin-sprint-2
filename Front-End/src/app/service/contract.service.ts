@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {TokenStorageService} from "./token-storage.service";
+import {IContractDto} from "../dto/i-contract-dto";
 const API_URL = environment.api_url;
 
 @Injectable({
@@ -24,8 +25,9 @@ export class ContractService {
     };
   }
 
-  addFavourite(contract:IContract): Observable<IContract> {
-    return this.http.get<IContract>(API_URL + '/order/like');
+  addFavourite(contract:IContractDto): Observable<IContractDto> {
+    console.log(this.http.post<IContractDto>(API_URL + '/order/like',contract));
+    return this.http.post<IContractDto>(API_URL + '/order/like',contract);
   }
   getContractList(id:number):Observable<IContract>{
     return this.http.get<IContract>(API_URL + '/order/list/' + id)

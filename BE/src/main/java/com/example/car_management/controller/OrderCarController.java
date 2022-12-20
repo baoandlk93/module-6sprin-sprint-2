@@ -25,7 +25,7 @@ public class OrderCarController {
     @Autowired
     private IContractService service;
 
-    @GetMapping("like")
+    @PostMapping("like")
     public ResponseEntity<ContractDto> likeCar(@RequestBody ContractDto contractDto) {
         Optional<OrderCar> orderCar = service.findById(contractDto.getId());
         Car car = contractDto.getCar();

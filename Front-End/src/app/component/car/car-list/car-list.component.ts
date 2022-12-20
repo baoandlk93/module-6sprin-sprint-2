@@ -137,7 +137,7 @@ export class CarListComponent implements OnInit {
             header: ' Cảnh báo!!!',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this.service.deleteCar(parseInt(product.id)).subscribe(() => {
+                this.service.deleteCar(product.id).subscribe(() => {
                     // console.log(product.id)
                     this.paginate();
                     this.messageService.add({
@@ -162,7 +162,7 @@ export class CarListComponent implements OnInit {
 
         if (this.car.name.trim()) {
             if (this.car.id) {
-                this.cars[this.findIndexById(this.car.id)] = this.car;
+                this.cars[this.findIndexById(String(this.car.id))] = this.car;
                 this.messageService.add({
                     severity: 'success',
                     summary: 'Successful',
@@ -170,6 +170,7 @@ export class CarListComponent implements OnInit {
                     life: 3000
                 });
             } else {
+                // @ts-ignore
                 this.car.id = this.createId();
                 this.car.picture = 'product-placeholder.svg';
                 this.cars.push(this.car);
@@ -190,6 +191,7 @@ export class CarListComponent implements OnInit {
     findIndexById(id: string): number {
         let index = -1;
         for (let i = 0; i < this.cars.length; i++) {
+            // @ts-ignore
             if (this.cars[i].id === id) {
                 index = i;
                 break;

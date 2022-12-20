@@ -4,6 +4,7 @@ import {ICustomerType} from "./i-customer-type";
 export interface IContract{
     id?: number;
     carId?: number;
+    startDate?: string;
     customerId:number;
     description: string;
     status: string;

@@ -364,7 +364,7 @@
                                 <div class="product-name text-2xl font-bold">
                                     {{car.name}}
                                     <p-button type="button" styleClass="p-button-success p-button-rounded mr-2"
-                                              icon="pi pi-star-fill" ></p-button>
+                                              icon="pi pi-star-fill" (click)="createContract(car.id)" ></p-button>
                                 </div>
                                 <i class="pi pi-tag product-category-icon"></i>
                                 <span class="product-category font-bold">{{car.brandName}}</span>
@@ -413,7 +413,7 @@
                                 <div class="product-name text-black-alpha-90 text-2xl font-bold text-center">
                                     {{car.name}}
                                     <p-button type="button" styleClass="p-button-success p-button-rounded mr-2"
-                                              icon="pi pi-star-fill" ></p-button>
+                                              icon="pi pi-star-fill" (click)="createContract(car.id)"></p-button>
                                 </div>
                                 <div class="product-description">
                                     <span class="font-bold">Màu sắc: </span>

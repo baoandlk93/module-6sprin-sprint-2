@@ -4,6 +4,12 @@ import {Car} from "../../../model/i-car";
 import {BehaviorSubject, Observable} from "rxjs";
 import {render} from "creditcardpayments/creditCardPayments";
 import {MessageService} from "primeng/api";
+import {IContractDto} from "../../../dto/i-contract-dto";
+import {ContractService} from "../../../service/contract.service";
+import {TokenStorageService} from "../../../service/token-storage.service";
+import {AuthService} from "../../../service/auth.service";
+import {CustomerService} from "../../../service/customer.service";
+import {ICustomer} from "../../../model/i-customer";
 
 
 @Component({
@@ -31,14 +37,46 @@ export class CartComponent implements OnInit {
     totalMoney: string;
     carName: string;
 
+    contract: IContractDto;
+    username: string;
+    customer: ICustomer;
+
     constructor(private service: CarService,
-                private messageService: MessageService) {
+                private messageService: MessageService,
+                private tokenService:TokenStorageService,
+                private authService: AuthService,
+                private contractService: ContractService,
+                private customerService: CustomerService,
+                private carService: CarService) {
 
     }
 
     ngOnInit(): void {
         this.getListCar();
         window.scroll(0,0);
+        if (this.tokenService.isLogged()) {
+            this.username = this.tokenService.getUser().username;
+        }
+    }
+
+
+    createContract(id:number){
+        this.contract = new class implements IContractDto {
+            car: Car;
+            customer: ICustomer;
+            id: number;
+            startDate: string;
+        }
+        this.carService.getCarById(id).subscribe(data =>{
+            this.contract.car = data;
+        });
+        this.customerService.findByUsername(this.username).subscribe(data =>{
+            this.contract.customer = data;
+        })
+        this.contract.startDate ='';
+        this.contractService.addFavourite(this.contract).subscribe(() =>{
+
+        })
     }
 
     loadPage(): void {
