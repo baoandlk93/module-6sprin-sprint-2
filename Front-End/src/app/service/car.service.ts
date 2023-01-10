@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {SearchResult} from "../model/search-result";
 import {Car} from "../model/i-car";
@@ -36,17 +36,17 @@ export class CarService {
     return this.http.get<SearchResult<Car>>(API_URL + '/car/list/'+ id);
   }
 
-  createCar(car: Car): Observable<Car> {
-    return this.http.post<Car>(API_URL + '/car/save', car);
+  createCar(car: Car): Observable<HttpEvent<Car>> {
+    return this.http.post<Car>(API_URL + '/car/save', car,this.httpOptions);
   }
 
   editCar(id: number, car: Car): Observable<Car> {
     return this.http.patch<Car>(API_URL + '/car/edit/' + id, car);
   }
 
-  deleteCar(id: number): Observable<void> {
+  deleteCar(id: number): Observable<HttpEvent<void>> {
     // console.log(API_URL + '/car/delete/' + id)
-    return this.http.delete<void>(API_URL + '/car/delete/' + id);
+    return this.http.delete<void>(API_URL + '/car/delete/' + id,this.httpOptions);
   }
 
   getCarById(id: number): Observable<Car> {
@@ -61,11 +61,7 @@ export class CarService {
     return this.http.get(API_URL + '/brand/list');
   }
 
-  // getUsername(): Observable<any> {
-  //   return this.http.get<any>(API_URL + '/customer/find-username/', this.httpOptions);
-  // }
-
-  addFavourite(contract:IContract): Observable<IContract> {
-    return this.http.get<IContract>(API_URL + '/order/like');
+  addFavourite(contract:IContract): Observable<HttpEvent<IContract>> {
+    return this.http.get<IContract>(API_URL + '/order/like', this.httpOptions);
   }
 }

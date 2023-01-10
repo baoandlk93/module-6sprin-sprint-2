@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IContract} from "../../../model/i-contract";
 import {ICustomer} from "../../../model/i-customer";
-import {BehaviorSubject, Observable} from "rxjs";
-import {Car} from "../../../model/i-car";
+import {Observable} from "rxjs";
 import {CarService} from "../../../service/car.service";
 import {MessageService} from "primeng/api";
 import {render} from "creditcardpayments/creditCardPayments";
@@ -62,7 +61,7 @@ export class ContractListComponent implements OnInit {
   getCustomer(){
     this.customerService.findByUsername(this.username).subscribe(data =>{
       console.log(data)
-      this.customer = data
+      // this.customer = data
       this.getListCar();
     });
   }
@@ -102,6 +101,7 @@ export class ContractListComponent implements OnInit {
   getListCar() {
     console.log(this.customer.id);
     this.contractService.getContractList(this.customer.id).subscribe(data => {
+      console.log(data);
       this.carList$ = data;
     })
   }

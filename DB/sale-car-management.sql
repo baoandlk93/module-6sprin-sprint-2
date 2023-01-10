@@ -78,7 +78,8 @@ foreign key(gear_id) references gear(id)
 create table if not exists order_car(
 id int primary key auto_increment,
 start_date datetime,
-status bit default 1,
+status bit default 0,
+like_status bit default 0,
 customer_id int,
 car_id int,
 foreign key(customer_id) references customer(id),

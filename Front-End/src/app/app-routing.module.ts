@@ -6,6 +6,8 @@ import {CarModule} from "./component/car/car.module";
 import {DecentralizationModule} from "./component/decentralization/decentralization.module";
 import {CartModule} from "./component/cart/cart.module";
 import {ContractModule} from "./component/contract/contract.module";
+import {CustomerModule} from "./component/customer/customer.module";
+import {AuthGuard} from "./service/auth.guard";
 
 const routes: Routes = [
   {
@@ -25,6 +27,14 @@ const routes: Routes = [
   },
   {
     path:'contract',loadChildren: () => ContractModule
+  },
+  {
+    path:'customer',
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_ADMIN']
+    },
+    loadChildren: () => CustomerModule
   }
 ];
 

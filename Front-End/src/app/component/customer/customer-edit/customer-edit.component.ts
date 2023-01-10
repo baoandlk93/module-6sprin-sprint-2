@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import Swal from 'sweetalert2';
 import {CustomerService} from '../../../service/customer.service';
 import {CustomerTypeService} from '../../../service/customer-type.service';
+import {TokenStorageService} from "../../../service/token-storage.service";
 
 
 @Component({
@@ -18,12 +19,13 @@ export class CustomerEditComponent implements OnInit {
   // CustomerTypes: ICustomerType[] = [];
   formEdit: FormGroup;
   user: FormGroup;
-  idCustomer: number;
+  username: string;
 
   constructor(private customerService: CustomerService,
               private customerTypeService: CustomerTypeService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private tokenService: TokenStorageService) {
     this.formEdit = new FormGroup({
       name: new FormControl('', [Validators.required,
         Validators.pattern(
@@ -51,9 +53,10 @@ export class CustomerEditComponent implements OnInit {
 
   // this.namedForm.addControl(this.name, new FormControl(''));
   ngOnInit(): void {
-    this.idCustomer = Number(this.activatedRoute.snapshot.params.id);
-    console.log(this.idCustomer);
-    this.customerService.findById(this.idCustomer).subscribe(value => {
+    this.username = this.tokenService.getUser().username;
+    this.customerService.findByUsername(this.username).subscribe(value => {
+
+      // @ts-ignore
       this.customer = value;
       this.formEdit.patchValue(this.customer);
       this.formEdit.get('user').get('username').setValue(this.customer.user.username);

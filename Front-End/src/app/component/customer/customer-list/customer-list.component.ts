@@ -15,7 +15,7 @@ export class CustomerListComponent implements OnInit {
   pageSize = 5;
   nameSearch = '';
   total$: Observable<number>;
-  customers$: Observable<ICustomer[]>;
+  customers$: BehaviorSubject<ICustomer[]>;
 
   constructor(private customerService: CustomerService,
               private title: Title) {
@@ -29,7 +29,10 @@ export class CustomerListComponent implements OnInit {
 
   getAllCustomer() {
     this.customerService.getCustomer(this.nameSearch, this.page, this.pageSize).subscribe(value => {
-        this.customers$ = new BehaviorSubject<ICustomer[]>(value.content);
+          console.log(value)
+        // @ts-ignore
+          this.customers$ = new BehaviorSubject<ICustomer[]>(value.content);
+          // @ts-ignore
         this.total$ = new BehaviorSubject<number>(value.totalElements);
       },
       error => {

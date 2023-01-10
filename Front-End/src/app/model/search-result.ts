@@ -1,8 +1,8 @@
 export interface SearchResult<T> {
   content: T[];
-  pagination: {
+  pageable: {
     pageNumber: number,
-    size: number
+    pageSize: number
   };
   totalElements: number;
   totalPages: number;

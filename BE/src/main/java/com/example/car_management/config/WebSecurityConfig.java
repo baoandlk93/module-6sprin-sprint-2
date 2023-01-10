@@ -48,24 +48,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable().
                 authorizeRequests()
                 .antMatchers("/api/public/**",
-                        "/api/customer/**",
-                        "/api/car/**",
+                        "/api/car/list",
+                        "/api/car/detail/**",
                         "/api/order/**",
 //                        "/api/car/detail/**",
+//                        "/api/customer/**",
                         "/api/brand/list",
                         "/api/gear/list",
                         "/api/contract/**"
                 )
                 .permitAll()
 
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers(HttpMethod.POST, "/api/promotion/save")
-//                .access("hasAnyRole('ROLE_EMPLOYEE')")
-//
                 .and()
                 .authorizeRequests()
-                .antMatchers("api/admin/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("api/customer/**","/api/customer/find")
+                .access("hasAnyRole('CUSTOMER')")
+
+                .and()
+                .authorizeRequests()
+                .antMatchers("api/admin/**","/api/customer/list","/api/car/delete/**").access("hasRole('ADMIN')")
                 .anyRequest()
                 .authenticated()
 

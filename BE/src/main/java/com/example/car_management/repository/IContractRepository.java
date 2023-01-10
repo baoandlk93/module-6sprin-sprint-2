@@ -6,34 +6,40 @@ import com.example.car_management.model.OrderCar;
 import com.example.car_management.model.car.Car;
 import com.example.car_management.model.customer.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
 import java.util.List;
-
+@Transactional
 public interface IContractRepository extends JpaRepository<OrderCar, Integer> {
     @Query(value = "update order_car " +
-            "set like_status = likeStatus " +
-            "where customer_id =: #{#customer.id} " +
-            "and car_id =: #{#car.id}", nativeQuery = true)
+            "set like_status = :likeStatus " +
+            "where customer_id =:#{#customer.id} " +
+            "and car_id =:#{#car.id}", nativeQuery = true)
     void likeCar(@Param("car") Car car,
                  @Param("customer") Customer customer,
                  @Param("likeStatus") int likeStatus);
 
     @Query(value = "update order_car " +
-            "set like_status = likeStatus " +
-            "where customer_id =: #{#customer.id} " +
-            "and car_id =: #{#car.id}", nativeQuery = true)
-    void unLikeCar(@Param("car") Car car, @Param("customer") Customer customer,@Param("likeStatus") int likeStatus);
+            "set like_status = :likeStatus " +
+            "where customer_id =:#{#customer.id} " +
+            "and car_id =:#{#car.id}", nativeQuery = true)
+    void unLikeCar(@Param("car") Car car,
+                   @Param("customer") Customer customer,
+                   @Param("likeStatus") int likeStatus);
 
+    @Modifying
     @Query(value = "insert into order_car(start_date,like_status,customer_id,car_id) " +
-            "values (#{#date},likeStatus,#{#customer.id},#{#car.id})", nativeQuery = true)
+            "values (:#{#date},:likeStatus,:#{#customer.id},:#{#car.id})", nativeQuery = true)
     void addContract(@Param("car") Car car,
                      @Param("customer") Customer customer,
                      @Param("date") String date,
                      @Param("likeStatus") int likeStatus
     );
-    @Query(value ="select order_car.id as id, " +
+
+    @Query(value = "select order_car.id as id, " +
             "order_car.customer_id as customerId, " +
             "order_car.car_id as carId, car.name AS name, " +
             "car.accreditation AS accreditation, " +
@@ -69,14 +75,14 @@ public interface IContractRepository extends JpaRepository<OrderCar, Integer> {
             "join gear on car.gear_id = gear.id " +
             "join customer on customer.id = order_car.customer_id " +
             "join user on customer.username = user.username " +
-            "where order_car.customer_id =:id" ,nativeQuery = true,
-    countQuery = "select count(*) " +
-            "from order_car " +
-            "join car on car.id = order_car.car_id " +
-            "join brand on car.brand_id = brand.id " +
-            "join gear on car.gear_id = gear.id " +
-            "join customer on customer.id = order_car.customer_id " +
-            "join user on customer.username = user.username " +
-            "where order_car.customer_id =:id")
+            "where order_car.customer_id =:id", nativeQuery = true,
+            countQuery = "select count(*) " +
+                    "from order_car " +
+                    "join car on car.id = order_car.car_id " +
+                    "join brand on car.brand_id = brand.id " +
+                    "join gear on car.gear_id = gear.id " +
+                    "join customer on customer.id = order_car.customer_id " +
+                    "join user on customer.username = user.username " +
+                    "where order_car.customer_id =:id")
     List<IContractDto> findContractByCustomerId(int id);
 }

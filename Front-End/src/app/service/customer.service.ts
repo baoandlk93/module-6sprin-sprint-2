@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 import {environment} from '../../environments/environment';
@@ -29,13 +29,13 @@ export class CustomerService {
     };
   }
 
-  getCustomer(name: string, page: number, pageSize: number): Observable<SearchResult<ICustomer>> {
+  getCustomer(name: string, page: number, pageSize: number): Observable<HttpEvent<SearchResult<ICustomer>>> {
     return this.http.get<SearchResult<ICustomer>>(this.URL_API + '/customer/list?nameSearch=' +
-      name + '&page=' + (page - 1) + '&size=' + pageSize);
+      name + '&page=' + (page - 1) + '&size=' + pageSize,this.httpOptions);
   }
 
-  findByUsername(username: string): Observable<ICustomer> {
-    return this.http.get<ICustomer>(this.URL_API + '/customer/find?username='+ username);
+  findByUsername(username: string): Observable<HttpEvent<ICustomer>> {
+    return this.http.get<ICustomer>(this.URL_API + '/customer/find?username='+ username, this.httpOptions);
   }
 
   editObject(icustomer: ICustomer): Observable<void> {

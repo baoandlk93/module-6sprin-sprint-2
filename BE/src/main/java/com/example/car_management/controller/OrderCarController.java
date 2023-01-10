@@ -5,16 +5,14 @@ import com.example.car_management.dto.IContractDto;
 import com.example.car_management.model.OrderCar;
 import com.example.car_management.model.car.Car;
 import com.example.car_management.model.customer.Customer;
-import com.example.car_management.service.car.ICarService;
 import com.example.car_management.service.contract.IContractService;
-import com.example.car_management.service.customer.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +27,14 @@ public class OrderCarController {
     public ResponseEntity<ContractDto> likeCar(@RequestBody ContractDto contractDto) {
         Optional<OrderCar> orderCar = service.findById(contractDto.getId());
         Car car = contractDto.getCar();
-        Customer customer = contractDto.getCustomer();
-        Date date = new Date();
+        Customer customer;
+        if (contractDto.getCustomer() == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        customer = contractDto.getCustomer();
+        String date = "";
+//        LocalDate localDate = new LocalDate.now();
+        date = String.valueOf(LocalDate.now());
         int status = 0;
         if (contractDto.isStatus()) {
             status = 1;
@@ -38,7 +42,7 @@ public class OrderCarController {
         if (orderCar.isPresent()) {
             service.likeCar(car, customer, status);
         } else {
-            service.addNew(car, customer, date.toString(), status);
+            service.addNew(car, customer, date, status);
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }

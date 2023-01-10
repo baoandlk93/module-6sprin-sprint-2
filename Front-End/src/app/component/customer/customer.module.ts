@@ -5,7 +5,6 @@ import { CustomerRoutingModule } from './customer-routing.module';
 import {CustomerListComponent} from './customer-list/customer-list.component';
 import {CustomerEditComponent} from './customer-edit/customer-edit.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -17,8 +16,7 @@ import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
         CommonModule,
         CustomerRoutingModule,
         FormsModule,
-        ReactiveFormsModule,
-        NgbPaginationModule
+        ReactiveFormsModule
     ]
 })
 export class CustomerModule { }
